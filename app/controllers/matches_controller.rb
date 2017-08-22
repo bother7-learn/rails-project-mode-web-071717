@@ -7,6 +7,7 @@ class MatchesController < ApplicationController
   end
 
   def create
+
     @match = Match.new
     # params[:hometeam_id] params[:awayteam_id]
     # home = Team.find(params[:hometeam_id]) or UserTeam.find(params[:hometeam_id])
