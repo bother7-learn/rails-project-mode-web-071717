@@ -1,0 +1,6 @@
+<h1> <%= @user_team.name %> </h1>
+<ol>
+  <% @user_team.players.each do |p| %>
+  <li><%= link_to p.name, player_path(p) %> Position: <%= p.position %></li>
+  <% end %>
+</ol>

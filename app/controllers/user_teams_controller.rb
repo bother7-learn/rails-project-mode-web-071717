@@ -3,6 +3,17 @@ class UserTeamsController < ApplicationController
   def new
     @user_team = UserTeam.new
     @players = Player.all
+      # @user_team.players.build
+      # @user_team.players.build
+      # @user_team.players.build
+      # @user_team.players.build
+      # @user_team.players.build
+      # @user_team.players.build
+      # @user_team.players.build
+      # @user_team.players.build
+      # @user_team.players.build
+      # @user_team.players.build
+      # @user_team.players.build
   end
 
   def show
@@ -10,14 +21,20 @@ class UserTeamsController < ApplicationController
   end
 
   def create
-    byebug
-    @user_team = UserTeam.new(userteam_params)
+    @user_team = UserTeam.new(name: params[:name])
+    params[:player_ids].each do |p|
+    @user_team.players << Player.find(p)
+    end
     if @user_team.valid?
       @user_team.save
       redirect_to user_team_path(@user_team)
     else
       render :new
     end
+  end
+
+  def show
+    @user_team = UserTeam.find(params[:id])
   end
 
   private
