@@ -2,17 +2,7 @@ class UserTeamsController < ApplicationController
 
   def new
     @user_team = UserTeam.new
-      # @user_team.players.build
-      # @user_team.players.build
-      # @user_team.players.build
-      # @user_team.players.build
-      # @user_team.players.build
-      # @user_team.players.build
-      # @user_team.players.build
-      # @user_team.players.build
-      # @user_team.players.build
-      # @user_team.players.build
-      # @user_team.players.build
+
   end
 
   def show
