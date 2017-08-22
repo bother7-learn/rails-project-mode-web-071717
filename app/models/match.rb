@@ -49,7 +49,7 @@ attr_accessor :hometeam, :awayteam
       gamelog[clock.round(2)] = {action: result, possession: ball(team), card: "player"}
     elsif result == "GOAL"
       hash = goal_scorer(team)
-      gamelog[clock.round(2)] = {action: result, possession: ball(team), scorer: hash[:scorer]}
+      gamelog[clock.round(2)] = {action: result, possession: ball(team), scored_by: hash[:scorer]}
     else
       gamelog[clock.round(2)] = {action: result, possession: ball(team)}
     end
@@ -90,7 +90,7 @@ attr_accessor :hometeam, :awayteam
       (player[1].to_f/total.to_f).rationalize
     end
     scorer = AliasTable.new(outcome, probability)
-    hash = {scorer: scorer.generate}
+    hash = {scored_by: scorer.generate}
   end
 
   def ball(theteam)
