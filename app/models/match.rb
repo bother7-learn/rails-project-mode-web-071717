@@ -38,22 +38,59 @@ attr_accessor :hometeam, :awayteam
     clock += rand(1.0..3.0).round(2)
     result = generator.generate
     if result == "shot"
-      result = shooting_chance
+      if team == false
+        result = shooting_chance(@hometeam, @awayteam)
+      else
+        result = shooting_chance(@awayteam, @hometeam)
+      end
     end
     if result == "foul"
       result = foul_chance
       gamelog[clock.round(2)] = {action: result, possession: ball(team), card: "player"}
+    elsif result == "GOAL"
+      hash = goal_scorer(team)
+      gamelog[clock.round(2)] = {action: result, possession: ball(team), scored_by: hash[:scorer]}
     else
       gamelog[clock.round(2)] = {action: result, possession: ball(team)}
     end
     clock
   end
 
-  def shooting_chance
+  def shooting_chance(team, opp_team)
     base = ["GOAL", "Missed Shot"]
-    probability = [30r/100, 70r/100]
+    shooting = 0.to_f
+    team.players.each do |player|
+      shooting += player.shooting.to_f
+    end
+    goalie = opp_team.players.find {|player| player.position == "goalie"}.defense.to_f
+    shooting = shooting * 5
+    goalie = goalie ** 2
+    total = shooting + goalie
+    probability = [(shooting/total).rationalize, (goalie/total).rationalize]
     shot = AliasTable.new(base, probability)
     shot.generate
+  end
+
+  def goal_scorer(team_boolean)
+    if team_boolean == false
+      team = @hometeam
+    else
+      team = @awayteam
+    end
+    players = team.players.map do |player|
+      [player.name, (player.shooting ** 3)]
+    end
+    outcome = []
+    total = 0
+    players.each do |player|
+      outcome << player[0]
+      total += player[1].to_f
+    end
+    probability = players.map do |player|
+      (player[1].to_f/total.to_f).rationalize
+    end
+    scorer = AliasTable.new(outcome, probability)
+    hash = {scored_by: scorer.generate}
   end
 
   def ball(theteam)
