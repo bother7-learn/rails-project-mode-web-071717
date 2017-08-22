@@ -1,0 +1,15 @@
+<h1> Create Your Own Team! </h1>
+<%=form_for @user_team do |t|%>
+Pick one Attacker:<%=t.collection_select(:id,Player.all,:id,:name)%><br>
+Pick one Attacker:<%=t.collection_select(:id,Player.all,:id,:name)%><br>
+Pick one Attacker:<%=t.collection_select(:id,Player.all,:id,:name)%><br>
+Pick one Defender:<%=t.collection_select(:id,Player.all,:id,:name)%><br>
+Pick one Defender:<%=t.collection_select(:id,Player.all,:id,:name)%><br>
+Pick one Defender:<%=t.collection_select(:id,Player.all,:id,:name)%><br>
+Pick one Defender:<%=t.collection_select(:id,Player.all,:id,:name)%><br>
+Pick one Midfielder:<%=t.collection_select(:id,Player.all,:id,:name)%><br>
+Pick one Midfielder:<%=t.collection_select(:id,Player.all,:id,:name)%><br>
+Pick one Midfielder:<%=t.collection_select(:id,Player.all,:id,:name)%><br>
+Pick one Midfielder:<%=t.collection_select(:id,Player.all,:id,:name)%><br>
+<%=t.submit%>
+<% end %>
