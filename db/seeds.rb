@@ -14,7 +14,7 @@ leagues = [
   {name:"La Liga"}, #1
   {name: "Bundesliga"}, #2
   {name: "Premier League"}, #3
-  {name: "French Ligue"}
+  {name: "French Ligue"} #4
 ]
 leagues.each {|l| League.create(l)}
 
@@ -27,27 +27,44 @@ teams = [
   {name: "Liverpool", league_id:3},            #6
   {name: "Atletico Madrid", league_id:1},      #7
   {name: "Bayern Munich", league_id:2},        #8
-  {name: "Paris Saint-Germain", league_id: 4} #9
+  {name: "Paris Saint-Germain", league_id: 4}  #9
 ]
 
 teams.each {|t| Team.create(t)}
-
+# {name:,shooting:, passing:, defense:, foul:, dribbling:, team_id:, position:},
 players = [
-  {name:"Sergio Ramos",shooting:75, passing:90, defense:75, foul:7, dribbling:80, team_id:1},
-  {name:"Christiano Ronaldo",shooting:97, passing:85, defense:75, foul:5, dribbling:93, team_id:1},
-  {name:"Zlatan Ibrahimovic",shooting:96, passing:80, defense:65, foul:13, dribbling:80, team_id:5},
-  {name:"Lionel Messi",shooting:75, passing:90, defense:75, foul:5, dribbling:80, team_id:2},
-  {name:"Pulisic",shooting:75, passing:90, defense:75, foul:7, dribbling:80, team_id:4},
-  {name:"Coutinho",shooting:75, passing:90, defense:75, foul:7, dribbling:80, team_id:6},
-  {name:"Lewandowski",shooting:75, passing:90, defense:75, foul:8, dribbling:80, team_id:8},
-  {name:"Arturo Vidal",shooting:75, passing:90, defense:75, foul:8, dribbling:80, team_id:8},
-  {name:"Marco Asensio",shooting:75, passing:90, defense:75, foul:4, dribbling:80, team_id:1},
-  {name:"Alexis Sanchez",shooting:75, passing:90, defense:75, foul:4, dribbling:80, team_id:3},
-  {name:"Luis Suarez",shooting:75, passing:90, defense:75, foul:8, dribbling:80, team_id:2},
-  {name:"Paul Pogba",shooting:75, passing:90, defense:75, foul:9, dribbling:80, team_id:3},
-  {name:"Antoine Griezmann",shooting:75, passing:90, defense:70, foul:65, dribbling:80, team_id:7},
-  {name:"Fernando Torres",shooting:75, passing:90, defense:70, foul:65, dribbling:80, team_id:7},
-  {name: "Neymar", shooting:95, passing:92, defense: 60, foul: 20, }
+  {name:"Sergio Ramos",shooting:75, passing:90, defense:75, foul:7, dribbling:80, team_id:1, position: "defender"},
+  {name:"Christiano Ronaldo",shooting:97, passing:85, defense:75, foul:5, dribbling:93, team_id:1, position: "forward"},
+  {name:"Zlatan Ibrahimovic",shooting:96, passing:80, defense:65, foul:13, dribbling:80, team_id:5, position: "forward"},
+  {name:"Lionel Messi",shooting:75, passing:90, defense:75, foul:5, dribbling:80, team_id:2, position: "forward"},
+  {name:"Christian Pulisic",shooting:75, passing:90, defense:75, foul:7, dribbling:80, team_id:4, position: "forward"},
+  {name:"Coutinho",shooting:75, passing:90, defense:75, foul:7, dribbling:80, team_id:6, position: "forward"},
+  {name:"Lewandowski",shooting:75, passing:90, defense:75, foul:8, dribbling:80, team_id:8, position: "forward"},
+  {name:"Arturo Vidal",shooting:75, passing:90, defense:75, foul:8, dribbling:80, team_id:8, position: "midfielder"},
+  {name:"Marco Asensio",shooting:75, passing:90, defense:75, foul:4, dribbling:80, team_id:1, position: "midfielder"},
+  {name:"Alexis Sanchez",shooting:75, passing:90, defense:75, foul:4, dribbling:80, team_id:3, position: "forward"},
+  {name:"Luis Suarez",shooting:75, passing:90, defense:75, foul:8, dribbling:80, team_id:2, position: "forward"},
+  {name:"Paul Pogba",shooting:75, passing:90, defense:75, foul:9, dribbling:80, team_id:3, position: "midfielder"},
+  {name:"Antoine Griezmann",shooting:75, passing:90, defense:70, foul:15, dribbling:80, team_id:7, position: "forward"},
+  {name:"Fernando Torres",shooting:75, passing:90, defense:70, foul:15, dribbling:80, team_id:7, position: "forward"},
+  {name: "Neymar", shooting:95, passing:92, defense: 60, foul: 20, dribbling: 90, team_id: 9, position: "forward"},
+  {name: "Marc ter Stergen", shooting:20, passing:80, defense: 95, foul: 30, dribbling: 40, team_id: 2, position: "goalie"},
+  {name: "Nelson Semedo", shooting:30, passing:80, defense:85, foul:30, dribbling:78, team_id:2, position: "defender"},
+  {name: "Javier Mascherano", shooting:70, passing:80, defense:88, foul:40, dribbling:80, team_id:2, position: "defender"},
+  {name: "Samuel Umtiti", shooting:30, passing:80, defense:85, foul:30, dribbling:80, team_id:2, position: "defender"},
+  {name: "David Alba", shooting:50, passing:75, defense:80, foul:40, dribbling:75, team_id:2, position: "defender"},
+  {name: "Ivan Rakitic", shooting:68, passing:90, defense:60, foul:40, dribbling:70, team_id:2, position: "midfielder"},
+  {name: "Sergio Busquets", shooting: 60, passing:85, defense:90, foul:50, dribbling:80, team_id:2, position: "midfielder"},
+  {name: "Sergi Roberto", shooting:70, passing:88, defense:75, foul:30, dribbling:80, team_id:2, position: "midfielder"},
+  {name: "Gerard Deulofeu", shooting:88, passing:75, defense:30, foul:15, dribbling:72, team_id:2, position: "forward"},
+  {name: "Antonio Adan", shooting:20, passing:60, defense:88, foul:34, dribbling:30, team_id:1, position:"goalie"},
+  {name: "Marcelo",shooting:30, passing:73, defense:85, foul:30, dribbling:60, team_id:1, position:"defender"},
+  {name: "Jesus Navas",shooting:70, passing:90, defense:48, foul:32, dribbling:85, team_id:1, position:"midfielder"},
+  {name: "Nacho",shooting:40, passing:72, defense:92, foul:40, dribbling:64, team_id:1, position: "defender"},
+  {name: "Toni Kroos",shooting:30, passing:80, defense:75, foul:38, dribbling:75, team_id:1, position: "midfielder"},
+  {name: "Dani Carvajal",shooting:40, passing:75, defense:89, foul:34, dribbling:60, team_id:1, position:"defender"},
+  {name: "Casemiro",shooting: 70, passing:75 , defense:85, foul:40, dribbling:60, team_id:1, position:"midfielder"},
+  {name: "Gareth Bale",shooting:92, passing:84, defense:50, foul:25, dribbling:87, team_id:1, position:"forward"},
 ]
 
 players.each {|p| Player.create(p)}

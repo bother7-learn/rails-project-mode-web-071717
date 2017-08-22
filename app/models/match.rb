@@ -1,9 +1,13 @@
 class Match < ApplicationRecord
 # validates :hometeam, :awayteam, presence: true
-before_save :simulate
+# before_save :simulate
+attr_accessor :hometeam, :awayteam
 # home team
 # away team
-
+def initialize(hometeam, awayteam)
+  @hometeam = hometeam
+  @awayteam = awayteam
+end
 # possessions can end with turnover, foul, or shot
 # possession increases the timer
 # when timer is > 90, game is over
@@ -69,5 +73,20 @@ before_save :simulate
     foul.generate
   end
 
-  
+  def defense_rating(team)
+    total = 0
+    team.players.each do |player|
+      total += player.defense ** 2
+    end
+    total
+  end
+
+  def offense_rating(team)
+
+  end
+
+  def foul_rating(team)
+
+  end
+
 end
