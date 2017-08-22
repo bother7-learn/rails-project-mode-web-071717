@@ -13,7 +13,7 @@ League.destroy_all
 leagues = [
   {name:"La Liga"}, #1
   {name: "Bundesliga"}, #2
-  {name: "Premier League"} #3
+  {name: "Premier League"}, #3
   {name: "French Ligue"}
 ]
 leagues.each {|l| League.create(l)}
@@ -26,7 +26,7 @@ teams = [
   {name: "Manchester United", league_id:3},    #5
   {name: "Liverpool", league_id:3},            #6
   {name: "Atletico Madrid", league_id:1},      #7
-  {name: "Bayern Munich", league_id:2}        #8
+  {name: "Bayern Munich", league_id:2},        #8
   {name: "Paris Saint-Germain", league_id: 4} #9
 ]
 
