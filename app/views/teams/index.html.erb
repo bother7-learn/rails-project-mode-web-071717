@@ -1,0 +1,6 @@
+<h1> All FIFA Teams </h1>
+<ol>
+<% @teams.each do |t| %>
+<li><%=link_to t.name, team_path(t)%></li>
+<%end%>
+</ol>

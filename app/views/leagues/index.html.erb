@@ -1,0 +1,6 @@
+<h1> All FIFA Leagues </h1>
+<ol>
+  <% @leagues.each do |l| %>
+  <li> <%=link_to l.name, league_path(l)%> </li><br>
+  <% end %>
+</ol>
