@@ -19,8 +19,9 @@ ActiveRecord::Schema.define(version: 20170822171710) do
   end
 
   create_table "matches", force: :cascade do |t|
-    t.integer "hometeam_id"
-    t.integer "awayteam_id"
+    t.integer "home_goals"
+    t.integer "away_goals"
+    t.string "final_log"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

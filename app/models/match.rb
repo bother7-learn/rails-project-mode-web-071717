@@ -1,10 +1,7 @@
 class Match < ApplicationRecord
 validates :hometeam, :awayteam, presence: true
-# before_save :simulate
-attr_accessor :hometeam, :awayteam, :final_log
-# home team
-# away team
-
+attr_accessor :hometeam, :awayteam
+# belongs_to :team or :userteam
 # possessions can end with turnover, foul, or shot
 # possession increases the timer
 # when timer is > 90, game is over
@@ -13,7 +10,6 @@ attr_accessor :hometeam, :awayteam, :final_log
     halftime = 0
     eventlog = {}
     base = ["shot", "turnover", "foul"]
-
     homeprob = prob(@hometeam, @awayteam)
     awayprob = prob(@awayteam, @hometeam)
     home_generator = AliasTable.new(base, homeprob)
@@ -34,7 +30,8 @@ attr_accessor :hometeam, :awayteam, :final_log
         eventlog[@timer] = "HALFTIME"
       end
     end
-    @final_log = eventlog
+    self.final_log = eventlog
+    tally_goals
   end
 
   def possession(clock, gamelog, generator, team)
@@ -47,7 +44,7 @@ attr_accessor :hometeam, :awayteam, :final_log
       result = foul_chance
       gamelog[clock.round(2)] = {action: result, possession: ball(team), card: "player"}
     else
-    gamelog[clock.round(2)] = {action: result, possession: ball(team)}
+      gamelog[clock.round(2)] = {action: result, possession: ball(team)}
     end
     clock
   end
@@ -108,13 +105,19 @@ attr_accessor :hometeam, :awayteam, :final_log
     [(offense/total).rationalize, ((defense. - foul)/total).rationalize, (foul/total).rationalize]
   end
 
-  def result
-    if @final_log
-      @final_log.each do |key, value|
-        byebug
+  def tally_goals
+    self.home_goals = 0
+    self.away_goals = 0
+    eval(self.final_log).each do |key, value|
+      if value != "HALFTIME" && value[:action] == "GOAL"
+        if value[:possession] == self.hometeam.name
+          self.home_goals += 1
+        else
+          self.away_goals += 1
+        end
       end
-    else
-      "game has not been simulated yet"
     end
   end
+
+
 end
