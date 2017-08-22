@@ -2,7 +2,18 @@ class UserTeamsController < ApplicationController
 
   def new
     @user_team = UserTeam.new
-
+    @players = Player.all
+      # @user_team.players.build
+      # @user_team.players.build
+      # @user_team.players.build
+      # @user_team.players.build
+      # @user_team.players.build
+      # @user_team.players.build
+      # @user_team.players.build
+      # @user_team.players.build
+      # @user_team.players.build
+      # @user_team.players.build
+      # @user_team.players.build
   end
 
   def show
@@ -18,6 +29,12 @@ class UserTeamsController < ApplicationController
     else
       render :new
     end
+  end
+
+  private
+
+  def userteam_params
+    params.require(:user_team).permit(:name)
   end
 
 end

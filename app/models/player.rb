@@ -1,6 +1,7 @@
 class Player < ApplicationRecord
   belongs_to :team, optional: true
-  belongs_to :user_team, optional: true
+  has_many :player_user_teams
+  has_many :user_teams, through: :player_user_teams
   delegate :league, to: :team
 
   validates :name, presence: true
