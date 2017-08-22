@@ -82,7 +82,11 @@ end
   end
 
   def offense_rating(team)
-
+    total = 0
+    team.players.each do |player|
+      total += player.defense ** 2
+    end
+    total
   end
 
   def foul_rating(team)
