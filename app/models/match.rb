@@ -1,13 +1,10 @@
 class Match < ApplicationRecord
-# validates :hometeam, :awayteam, presence: true
+validates :hometeam, :awayteam, presence: true
 # before_save :simulate
-attr_accessor :hometeam, :awayteam
+attr_accessor :hometeam, :awayteam, :final_log
 # home team
 # away team
-def initialize(hometeam, awayteam)
-  @hometeam = hometeam
-  @awayteam = awayteam
-end
+
 # possessions can end with turnover, foul, or shot
 # possession increases the timer
 # when timer is > 90, game is over
@@ -15,16 +12,20 @@ end
     @timer = 0.00
     halftime = 0
     eventlog = {}
-    base = ["shot", "foul", "turnover"]
-    foul = 20r/100
-    defense = 60r/100
-    offense = 20r/100
-    probability = [offense, foul, defense]
-    outcome_generator = AliasTable.new(base, probability)
+    base = ["shot", "turnover", "foul"]
+
+    homeprob = prob(@hometeam, @awayteam)
+    awayprob = prob(@awayteam, @hometeam)
+    home_generator = AliasTable.new(base, homeprob)
+    away_generator = AliasTable.new(base, awayprob)
     halftime = 0
     @team_with_ball = false
     while @timer < 90.00
-      x = possession(@timer, eventlog, outcome_generator, @team_with_ball)
+      if @team_with_ball == false
+        x = possession(@timer, eventlog, home_generator, @team_with_ball)
+      else
+        x = possession(@timer, eventlog, away_generator, @team_with_ball)
+      end
       @timer = x
       @team_with_ball ^= true
       if @timer > 45.00 && halftime == 0
@@ -33,7 +34,7 @@ end
         eventlog[@timer] = "HALFTIME"
       end
     end
-    eventlog
+    @final_log = eventlog
   end
 
   def possession(clock, gamelog, generator, team)
@@ -60,9 +61,9 @@ end
 
   def ball(theteam)
     if theteam == true
-    "awayteam"
+    @awayteam.name
     else
-    "hometeam"
+    @hometeam.name
     end
   end
 
@@ -76,17 +77,44 @@ end
   def defense_rating(team)
     total = 0
     team.players.each do |player|
-      total += player.defense ** 2
+      total += player.defense ** 2 * 3
     end
     total
   end
 
   def offense_rating(team)
-
+    total = 0
+    team.players.each do |player|
+      total += player.passing ** 2
+    end
+    total
   end
 
   def foul_rating(team)
-
+    total = 0
+    team.players.each do |player|
+      total += player.foul ** 2
+    end
+    total
+  end
+  # foul = 0.2.rationalize
+  # defense = 0.6.rationalize
+  # offense = 0.2.rationalize
+  def prob(main_team, opposing_team)
+    offense = offense_rating(main_team).to_f
+    defense = defense_rating(opposing_team).to_f
+    foul = 3 * foul_rating(main_team).to_f
+    total = offense + defense
+    [(offense/total).rationalize, ((defense. - foul)/total).rationalize, (foul/total).rationalize]
   end
 
+  def result
+    if @final_log
+      @final_log.each do |key, value|
+        byebug
+      end
+    else
+      "game has not been simulated yet"
+    end
+  end
 end
