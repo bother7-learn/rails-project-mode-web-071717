@@ -5,5 +5,4 @@ class Player < ApplicationRecord
 
   validates :name, presence: true
   validates :shooting,:passing,:defense,:foul,:dribbling, presence: true
-  # validates :user_team_id, absence: true
 end

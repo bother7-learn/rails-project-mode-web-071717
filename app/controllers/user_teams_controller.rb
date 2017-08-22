@@ -2,7 +2,7 @@ class UserTeamsController < ApplicationController
 
   def new
     @user_team = UserTeam.new
-
+    @players = Player.all
   end
 
   def show

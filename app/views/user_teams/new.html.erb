@@ -1,15 +1,16 @@
 <h1> Create Your Own Team! </h1>
-<%=form_for @user_team do |t|%>
-Pick one Attacker:<%=t.collection_select(:id,Player.all,:id,:name)%><br>
-Pick one Attacker:<%=t.collection_select(:id,Player.all,:id,:name)%><br>
-Pick one Attacker:<%=t.collection_select(:id,Player.all,:id,:name)%><br>
-Pick one Defender:<%=t.collection_select(:id,Player.all,:id,:name)%><br>
-Pick one Defender:<%=t.collection_select(:id,Player.all,:id,:name)%><br>
-Pick one Defender:<%=t.collection_select(:id,Player.all,:id,:name)%><br>
-Pick one Defender:<%=t.collection_select(:id,Player.all,:id,:name)%><br>
-Pick one Midfielder:<%=t.collection_select(:id,Player.all,:id,:name)%><br>
-Pick one Midfielder:<%=t.collection_select(:id,Player.all,:id,:name)%><br>
-Pick one Midfielder:<%=t.collection_select(:id,Player.all,:id,:name)%><br>
-Pick one Midfielder:<%=t.collection_select(:id,Player.all,:id,:name)%><br>
-<%=t.submit%>
+<%=form_tag "/user_teams" do %>
+<h2> Name of Your Team: <%= text_field_tag "name" %></h2>
+Pick one Attacker:<%=select_tag 'player_ids[]', options_for_select(@players.collect{ |u| [u.name, u.id] })%><br>
+Pick one Attacker:<%=select_tag 'player_ids[]', options_for_select(@players.collect{ |u| [u.name, u.id] })%><br>
+Pick one Attacker:<%=select_tag 'player_ids[]', options_for_select(@players.collect{ |u| [u.name, u.id] })%><br>
+Pick one Midfielder:<%=select_tag 'player_ids[]', options_for_select(@players.collect{ |u| [u.name, u.id] })%><br>
+Pick one Midfielder:<%=select_tag 'player_ids[]', options_for_select(@players.collect{ |u| [u.name, u.id] })%><br>
+Pick one Midfielder:<%=select_tag 'player_ids[]', options_for_select(@players.collect{ |u| [u.name, u.id] })%><br>
+Pick one Midfielder:<%=select_tag 'player_ids[]', options_for_select(@players.collect{ |u| [u.name, u.id] })%><br>
+Pick one Defender:<%=select_tag 'player_ids[]', options_for_select(@players.collect{ |u| [u.name, u.id] })%><br>
+Pick one Defender:<%=select_tag 'player_ids[]', options_for_select(@players.collect{ |u| [u.name, u.id] })%><br>
+Pick one Defender:<%=select_tag 'player_ids[]', options_for_select(@players.collect{ |u| [u.name, u.id] })%><br>
+Pick one Defender:<%=select_tag 'player_ids[]', options_for_select(@players.collect{ |u| [u.name, u.id] })%><br>
+<%= submit_tag %>
 <% end %>

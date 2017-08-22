@@ -14,6 +14,7 @@ leagues = [
   {name:"La Liga"}, #1
   {name: "Bundesliga"}, #2
   {name: "Premier League"} #3
+  {name: "French Ligue"}
 ]
 leagues.each {|l| League.create(l)}
 
@@ -26,6 +27,7 @@ teams = [
   {name: "Liverpool", league_id:3},            #6
   {name: "Atletico Madrid", league_id:1},      #7
   {name: "Bayern Munich", league_id:2}        #8
+  {name: "Paris Saint-Germain", league_id: 4} #9
 ]
 
 teams.each {|t| Team.create(t)}
@@ -44,7 +46,8 @@ players = [
   {name:"Luis Suarez",shooting:75, passing:90, defense:75, foul:8, dribbling:80, team_id:2},
   {name:"Paul Pogba",shooting:75, passing:90, defense:75, foul:9, dribbling:80, team_id:3},
   {name:"Antoine Griezmann",shooting:75, passing:90, defense:70, foul:65, dribbling:80, team_id:7},
-  {name:"Fernando Torres",shooting:75, passing:90, defense:70, foul:65, dribbling:80, team_id:7}
+  {name:"Fernando Torres",shooting:75, passing:90, defense:70, foul:65, dribbling:80, team_id:7},
+  {name: "Neymar", shooting:95, passing:92, defense: 60, foul: 20, }
 ]
 
 players.each {|p| Player.create(p)}
