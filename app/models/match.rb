@@ -12,9 +12,9 @@ before_save :simulate
     halftime = 0
     eventlog = {}
     base = ["shot", "foul", "turnover"]
-    foul = 2r/10
-    defense = 6r/10
-    offense = 2r/10
+    foul = 20r/100
+    defense = 60r/100
+    offense = 20r/100
     probability = [offense, foul, defense]
     outcome_generator = AliasTable.new(base, probability)
     halftime = 0
@@ -38,13 +38,18 @@ before_save :simulate
     if result == "shot"
       result = shooting_chance
     end
+    if result == "foul"
+      result = foul_chance
+      gamelog[clock.round(2)] = {action: result, possession: ball(team), card: "player"}
+    else
     gamelog[clock.round(2)] = {action: result, possession: ball(team)}
+    end
     clock
   end
 
   def shooting_chance
     base = ["GOAL", "Missed Shot"]
-    probability = [3r/10, 7r/10]
+    probability = [30r/100, 70r/100]
     shot = AliasTable.new(base, probability)
     shot.generate
   end
@@ -57,6 +62,12 @@ before_save :simulate
     end
   end
 
+  def foul_chance
+    base = ["foul", "yellow card", "red card"]
+    probability = [70r/100, 25r/100, 5r/100]
+    foul = AliasTable.new(base, probability)
+    foul.generate
+  end
 
-
+  
 end
