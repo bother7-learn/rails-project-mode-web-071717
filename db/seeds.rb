@@ -31,20 +31,20 @@ teams = [
 teams.each {|t| Team.create(t)}
 
 players = [
-  {name:"Sergio Ramos", team_id:1},
-  {name:"Christiano Ronaldo", team_id:1},
-  {name:"Zlatan Ibrahimovic", team_id:5},
-  {name:"Lionel Messi", team_id:2},
-  {name:"Pulisic", team_id:4},
-  {name:"Coutinho", team_id:6},
-  {name:"Lewandowski", team_id:8},
-  {name:"Arturo Vidal", team_id:8},
-  {name:"Marco Asensio", team_id:1},
-  {name:"Alexis Sanchez", team_id:3},
-  {name:"Luis Suarez", team_id:2},
-  {name:"Paul Pogba", team_id:3},
-  {name:"Antoine Griezmann", team_id:7},
-  {name:"Fernando Torres", team_id:7}
+  {name:"Sergio Ramos",shooting:75, passing:90, defense:75, foul:7, dribbling:80, team_id:1},
+  {name:"Christiano Ronaldo",shooting:97, passing:85, defense:75, foul:5, dribbling:93, team_id:1},
+  {name:"Zlatan Ibrahimovic",shooting:96, passing:80, defense:65, foul:13, dribbling:80, team_id:5},
+  {name:"Lionel Messi",shooting:75, passing:90, defense:75, foul:5, dribbling:80, team_id:2},
+  {name:"Pulisic",shooting:75, passing:90, defense:75, foul:7, dribbling:80, team_id:4},
+  {name:"Coutinho",shooting:75, passing:90, defense:75, foul:7, dribbling:80, team_id:6},
+  {name:"Lewandowski",shooting:75, passing:90, defense:75, foul:8, dribbling:80, team_id:8},
+  {name:"Arturo Vidal",shooting:75, passing:90, defense:75, foul:8, dribbling:80, team_id:8},
+  {name:"Marco Asensio",shooting:75, passing:90, defense:75, foul:4, dribbling:80, team_id:1},
+  {name:"Alexis Sanchez",shooting:75, passing:90, defense:75, foul:4, dribbling:80, team_id:3},
+  {name:"Luis Suarez",shooting:75, passing:90, defense:75, foul:8, dribbling:80, team_id:2},
+  {name:"Paul Pogba",shooting:75, passing:90, defense:75, foul:9, dribbling:80, team_id:3},
+  {name:"Antoine Griezmann",shooting:75, passing:90, defense:70, foul:65, dribbling:80, team_id:7},
+  {name:"Fernando Torres",shooting:75, passing:90, defense:70, foul:65, dribbling:80, team_id:7}
 ]
 
 players.each {|p| Player.create(p)}

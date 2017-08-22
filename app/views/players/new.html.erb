@@ -1,4 +1,16 @@
 <h1> Create Player Here </h1>
 <%= form_for @player do |f| %>
 <%= f.label :name %>
-<%= f.text_field :name %>
+<%= f.text_field :name %><br>
+<%= f.label :shooting %>
+<%= f.number_field :shooting %><br>
+<%= f.label :passing %>
+<%= f.number_field :passing %><br>
+<%= f.label :defense %>
+<%= f.number_field :defense %><br>
+<%= f.label :foul %>
+<%= f.number_field :foul %><br>
+<%= f.label :dribbling %>
+<%= f.number_field :dribbling %><br>
+<%= f.submit %>
+<% end %>
