@@ -16,6 +16,10 @@ class UserTeamsController < ApplicationController
       # @user_team.players.build
   end
 
+  def index
+    @user_teams = UserTeam.all
+  end
+
   def show
     @user_team = UserTeam.find(params[:id])
   end

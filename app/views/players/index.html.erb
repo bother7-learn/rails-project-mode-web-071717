@@ -1,8 +1,12 @@
 <h1> All Players </h1>
+
+<%= form_tag(players_path, :method => "get", id: "search-form") do %>
+    <%= text_field_tag :search, params[:search], placeholder: "Search By Player Name" %>
+    <%= submit_tag "Search", :name => nil %>
+<% end %>
+
   <ol>
  <% @players.each do |p| %>
   <li><%=link_to p.name, player_path(p) %></li><br>
     <%end%>
   </ol>
-
-   

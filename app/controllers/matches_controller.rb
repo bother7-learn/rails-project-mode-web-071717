@@ -24,8 +24,17 @@ class MatchesController < ApplicationController
    # away = Team.find(params[:away_team_id]) or UserTeam.find(params[:away_user_team_id])
    @match.hometeam = home
    @match.awayteam = away
+   @match.home_name = home.name
+   @match.away_name = away.name
 
    @match.simulate
    @match.save
+   redirect_to match_path(@match)
   end
+
+  def show
+    @match = Match.find(params[:id])
+  end
+
+
 end

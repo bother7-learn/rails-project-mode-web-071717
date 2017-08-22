@@ -5,8 +5,18 @@ class PlayersController < ApplicationController
   end
 
   def index
-    @players = Player.all
+    if params[:search]
+      arr = []
+      Player.all.each do |p|
+        if p.name == params[:search]
+          arr << p
+        end
+        @players = arr
+      end
+    else
+      @players = Player.all
   end
+end
 
   def create
     @player = Player.new(player_params)

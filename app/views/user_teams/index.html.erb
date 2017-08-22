@@ -1,0 +1,4 @@
+<h1> All User Created Teams </h1>
+<% @user_teams.each do |t| %>
+  <li> <%=link_to t.name, t %> </li>
+  <% end %>
