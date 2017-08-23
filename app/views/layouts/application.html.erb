@@ -9,6 +9,18 @@
   </head>
 
   <body>
+    <header class="navbar navbar-fixed-top navbar-inverse">
+      <div class="container">
+        <nav>
+          <ul class="nav navbar-nav navbar-right">
+            <li><%= link_to "Teams",   teams_path %></li>
+            <li><%= link_to "Players", players_path %></li>
+            <li><%= link_to "Match", new_match_path %></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+    <div class="container">
     <%= yield %>
   </body>
 </html>
