@@ -2,4 +2,23 @@
 <%=@match.away_name%>: <%=@match.away_goals %><br>
 <br>
 
-<%= @match.final_log %>
+
+<ul>
+<%eval(@match.final_log).each do |k,v|%>
+<%if v!= "HALFTIME" && !v.keys.include?(:scored_by)%>
+          <%if k.to_s.split('.').last.length == 1%>
+          <li><%="At #{k}0 there was a #{v[:action]} for #{v[:possession]}"%></li><br>
+          <%else%>
+          <li><%="At #{k} there was a #{v[:action]} for #{v[:possession]}"%></li><br>
+          <%end%>
+<%elsif v!= "HALFTIME" && v.keys.include?(:scored_by)%>
+          <%if k.to_s.split('.').last.length == 1 %>
+            <li><%="At #{k}0 #{v[:scored_by]} scored for #{v[:possession]}!!! Goooooooaaaaaaaaaaal!!!!!!"%></li><br>
+          <%else%>
+  <li><%="At #{k} #{v[:scored_by]} scored for #{v[:possession]}!!! Goooooooaaaaaaaaaaal!!!!!!" %></li><br>
+  <%end%>
+<%end%>
+<%end%>
+ </ul>
+
+ <%=@match.final_log%>

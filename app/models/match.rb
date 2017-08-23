@@ -46,12 +46,12 @@ attr_accessor :hometeam, :awayteam
     end
     if result == "foul"
       result = foul_chance
-      gamelog[clock.round(2)] = {action: result, possession: ball(team), card: "player"}
+      gamelog[perfect_num(clock.round(2))] = {action: result, possession: ball(team), card: "player"}
     elsif result == "GOAL"
       hash = goal_scorer(team)
-      gamelog[clock.round(2)] = {action: result, possession: ball(team), scored_by: hash[:scorer]}
+      gamelog[perfect_num(clock.round(2))] = {action: result, possession: ball(team), scored_by: hash[:scored_by]}
     else
-      gamelog[clock.round(2)] = {action: result, possession: ball(team)}
+      gamelog[perfect_num(clock.round(2))] = {action: result, possession: ball(team)}
     end
     clock
   end
@@ -155,6 +155,19 @@ attr_accessor :hometeam, :awayteam
       end
     end
   end
+
+  def perfect_num(float)
+      seconds = float.to_s.split('.').last.to_i
+      minutes = float.to_s.split('.').first.to_i
+    if seconds > 60
+      a = seconds - 60
+      b= minutes + 1
+      (b.to_s + "." + a.to_s).to_f
+    else
+      float
+    end
+  end
+
 
 
 end
