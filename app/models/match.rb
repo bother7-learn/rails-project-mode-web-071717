@@ -1,19 +1,18 @@
 class Match < ApplicationRecord
 belongs_to :hometeam, class_name: "UserTeam"
 belongs_to :awayteam, class_name: "UserTeam"
-# possessions can end with turnover, foul, or shot
-# possession increases the timer
+
 # when timer is > 90, game is over
   def simulate
     @timer = 0.00
     halftime = 0
     eventlog = {}
+    @team_with_ball = false
     base = ["shot", "turnover", "foul"]
     homeprob = prob(hometeam, awayteam)
     awayprob = prob(awayteam, hometeam)
     home_generator = AliasTable.new(base, homeprob)
     away_generator = AliasTable.new(base, awayprob)
-    @team_with_ball = false
     # this loop runs the game
     # ****************
     while @timer < 90.00
