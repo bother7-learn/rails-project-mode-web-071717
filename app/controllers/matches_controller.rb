@@ -4,7 +4,6 @@ class MatchesController < ApplicationController
     @match = Match.new
     @teams = Team.all
     @user_teams = UserTeam.all
-    render :new
   end
 
   def create
