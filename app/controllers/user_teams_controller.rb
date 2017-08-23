@@ -32,8 +32,26 @@ class UserTeamsController < ApplicationController
     end
   end
 
-  def show
+  def edit
     @user_team = UserTeam.find(params[:id])
+    @players = Player.all
+  end
+
+  def update
+    @user_team = UserTeam.find(params[:id])
+    if @user_team.user_id == session[:user_id]
+      @user_team.name = params[:name]
+      @user_team.players = []
+      params[:player_ids].each do |p|
+      @user_team.players << Player.find(p)
+      end
+    end
+    if @user_team.valid?
+      @user_team.save
+      redirect_to user_team_path(@user_team)
+    else
+      redirect_to edit_user_team_path(@user_team)
+    end
   end
 
   private

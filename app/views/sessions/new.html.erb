@@ -1,5 +1,5 @@
 <h1> Login User </h1>
-<%= form_for @user do |t| %>
+<%= form_for @user, url: "/login", method: :post do |t| %>
 <%= t.label :name %>
 <%= t.text_field :name %>
 <%= t.label :password %>
