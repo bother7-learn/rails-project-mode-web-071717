@@ -50,6 +50,9 @@ belongs_to :awayteam, class_name: "UserTeam"
     elsif result == "GOAL"
       hash = goal_scorer(team_boolean)
       gamelog[perfect_num(clock.round(2))] = {action: result, possession: ball(team_boolean).name, scored_by: hash[:scored_by], assist_by: hash[:assist_by]}
+    elsif result == "Missed Shot"
+      hash = shooter(team_boolean)
+      gamelog[perfect_num(clock.round(2))] = {action: result, possession: ball(team_boolean).name, shot_by: hash[:shot_by]}
     else
       gamelog[perfect_num(clock.round(2))] = {action: result, possession: ball(team_boolean).name}
     end
@@ -111,6 +114,29 @@ belongs_to :awayteam, class_name: "UserTeam"
     # ********************
     hash.merge(assist_by: assist.generate)
   end
+
+  def shooter(team_boolean)
+    if team_boolean == false
+      team = hometeam
+    else
+      team = awayteam
+    end
+    # shooting probability
+    players = team.players.map do |player|
+      [player.name, (player.shooting ** 3)]
+    end
+    outcome = []
+    total = 0
+    players.each do |player|
+      outcome << player[0]
+      total += player[1].to_f
+    end
+    probability = players.map do |player|
+      (player[1].to_f/total.to_f).rationalize
+    end
+    shooter = AliasTable.new(outcome, probability)
+    hash = {shot_by: shooter.generate}
+    end
 
   def ball(theteam)
     if theteam == true
@@ -194,8 +220,9 @@ belongs_to :awayteam, class_name: "UserTeam"
       seconds = float.split('.').last.to_i
       minutes = float.split('.').first.to_i
       a = seconds * 0.6
+      a = '%02d' % a
       b= minutes
-      (b.to_s + "." + a.to_s).to_f
+      (b.to_s + "." + a).to_f
   end
 
 
