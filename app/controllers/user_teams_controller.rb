@@ -3,17 +3,6 @@ class UserTeamsController < ApplicationController
   def new
     @user_team = UserTeam.new
     @players = Player.all
-      # @user_team.players.build
-      # @user_team.players.build
-      # @user_team.players.build
-      # @user_team.players.build
-      # @user_team.players.build
-      # @user_team.players.build
-      # @user_team.players.build
-      # @user_team.players.build
-      # @user_team.players.build
-      # @user_team.players.build
-      # @user_team.players.build
   end
 
   def index
