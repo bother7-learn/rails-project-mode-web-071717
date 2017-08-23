@@ -14,8 +14,9 @@ attr_accessor :hometeam, :awayteam
     awayprob = prob(@awayteam, @hometeam)
     home_generator = AliasTable.new(base, homeprob)
     away_generator = AliasTable.new(base, awayprob)
-    halftime = 0
     @team_with_ball = false
+    # this loop runs the game
+    # ****************
     while @timer < 90.00
       if @team_with_ball == false
         x = possession(@timer, eventlog, home_generator, @team_with_ball)
@@ -30,28 +31,29 @@ attr_accessor :hometeam, :awayteam
         eventlog[@timer] = "HALFTIME"
       end
     end
+    # ***************
     self.final_log = eventlog
     tally_goals
   end
 
-  def possession(clock, gamelog, generator, team)
+  def possession(clock, gamelog, generator, team_boolean)
     clock += rand(1.0..3.0).round(2)
     result = generator.generate
     if result == "shot"
-      if team == false
+      if team_boolean == false
         result = shooting_chance(@hometeam, @awayteam)
       else
         result = shooting_chance(@awayteam, @hometeam)
       end
     end
     if result == "foul"
-      result = foul_chance
-      gamelog[perfect_num(clock.round(2))] = {action: result, possession: ball(team), card: "player"}
+      hash = foul_chance(!team_boolean)
+      gamelog[clock.round(2)] = {action: hash[:result], possession: ball(team_boolean).name, foul_by: hash[:foul_by]}
     elsif result == "GOAL"
-      hash = goal_scorer(team)
-      gamelog[perfect_num(clock.round(2))] = {action: result, possession: ball(team), scored_by: hash[:scored_by]}
+      hash = goal_scorer(team_boolean)
+      gamelog[clock.round(2)] = {action: result, possession: ball(team_boolean).name, scored_by: hash[:scored_by], assist_by: hash[:assist_by]}
     else
-      gamelog[perfect_num(clock.round(2))] = {action: result, possession: ball(team)}
+      gamelog[clock.round(2)] = {action: result, possession: ball(team_boolean).name}
     end
     clock
   end
@@ -77,6 +79,7 @@ attr_accessor :hometeam, :awayteam
     else
       team = @awayteam
     end
+    # shooting probability
     players = team.players.map do |player|
       [player.name, (player.shooting ** 3)]
     end
@@ -91,21 +94,53 @@ attr_accessor :hometeam, :awayteam
     end
     scorer = AliasTable.new(outcome, probability)
     hash = {scored_by: scorer.generate}
+    # ******************************
+        # do it again for assists, probably can be refactored
+    players = team.players.map do |player|
+      [player.name, (player.passing ** 3)]
+    end
+    players.delete(hash[:scored_by])
+    outcome = []
+    total = 0
+    players.each do |player|
+      outcome << player[0]
+      total += player[1].to_f
+    end
+    probability = players.map do |player|
+      (player[1].to_f/total.to_f).rationalize
+    end
+    assist = AliasTable.new(outcome, probability)
+    # ********************
+    hash.merge(assist_by: assist.generate)
   end
 
   def ball(theteam)
     if theteam == true
-    @awayteam.name
+    @awayteam
     else
-    @hometeam.name
+    @hometeam
     end
   end
 
-  def foul_chance
+  def foul_chance(opp_team_boolean)
     base = ["foul", "yellow card", "red card"]
     probability = [70r/100, 25r/100, 5r/100]
     foul = AliasTable.new(base, probability)
-    foul.generate
+    hash = {result: foul.generate}
+    players = ball(opp_team_boolean).players.map do |player|
+      [player.name, (player.foul ** 3)]
+    end
+    outcome = []
+    total = 0
+    players.each do |player|
+      outcome << player[0]
+      total += player[1].to_f
+    end
+    probability = players.map do |player|
+      (player[1].to_f/total.to_f).rationalize
+    end
+    foul_by = AliasTable.new(outcome, probability)
+    hash.merge(foul_by: foul_by.generate)
   end
 
   def defense_rating(team)
