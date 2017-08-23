@@ -1,0 +1,16 @@
+<h1> Create Your Own Team! </h1>
+<%=form_tag "/user_teams/#{@user_team.id}", :method=>'patch' do %>
+<h2> Name of Your Team: <%= text_field_tag "name", @user_team.name %></h2>
+Pick one Attacker: <%=select_tag 'player_ids[]', options_for_select(@players.where("position = 'forward'").collect{ |u| [u.name, u.id] }), :selected => @user_team.player_ids[0] %><br>
+Pick one Attacker: <%=select_tag 'player_ids[]', options_for_select(@players.where("position = 'forward'").collect{ |u| [u.name, u.id] }), :selected => @user_team.player_ids[1] %><br>
+Pick one Attacker: <%=select_tag 'player_ids[]', options_for_select(@players.where("position = 'forward'").collect{ |u| [u.name, u.id] }), :selected => @user_team.player_ids[2] %><br>
+Pick one Midfielder: <%=select_tag 'player_ids[]', options_for_select(@players.where("position = 'midfielder'").collect{ |u| [u.name, u.id] }), :selected => @user_team.player_ids[3] %><br>
+Pick one Midfielder: <%=select_tag 'player_ids[]', options_for_select(@players.where("position = 'midfielder'").collect{ |u| [u.name, u.id] }), :selected => @user_team.player_ids[4] %><br>
+Pick one Midfielder: <%=select_tag 'player_ids[]', options_for_select(@players.where("position = 'midfielder'").collect{ |u| [u.name, u.id] }), :selected => @user_team.player_ids[5] %><br>
+Pick one Midfielder: <%=select_tag 'player_ids[]', options_for_select(@players.where("position = 'midfielder'").collect{ |u| [u.name, u.id] }) , :selected => @user_team.player_ids[6] %><br>
+Pick one Defender: <%=select_tag 'player_ids[]', options_for_select(@players.where("position = 'defender'").collect{ |u| [u.name, u.id] }), :selected => @user_team.player_ids[7] %><br>
+Pick one Defender: <%=select_tag 'player_ids[]', options_for_select(@players.where("position = 'defender'").collect{ |u| [u.name, u.id] }), :selected => @user_team.player_ids[8] %><br>
+Pick one Defender: <%=select_tag 'player_ids[]', options_for_select(@players.where("position = 'defender'").collect{ |u| [u.name, u.id] }), :selected => @user_team.player_ids[9] %><br>
+Pick one Goalie: <%=select_tag 'player_ids[]', options_for_select(@players.where("position = 'goalie'").collect{ |u| [u.name, u.id] }), :selected => @user_team.player_ids[10] %><br>
+<%= submit_tag "Edit Team" %>
+<% end %>

@@ -38,4 +38,21 @@ class Player < ApplicationRecord
     count
   end
 
+  def shots(userteam)
+    logs = userteam.matches.map do |match|
+      eval(match.final_log)
+    end
+    count = 0
+    goals = logs.each do |log|
+      check = log.each do |key, value|
+      if value != "HALFTIME" && value[:action] == "Missed Shot" && value[:possession] == userteam.name && value[:shot_by] == self.name
+        count += 1
+      elsif value != "HALFTIME" && value[:action] == "GOAL" && value[:possession] == userteam.name && value[:scored_by] == self.name
+          count += 1
+        end
+      end
+    end
+    count
+  end
+
 end

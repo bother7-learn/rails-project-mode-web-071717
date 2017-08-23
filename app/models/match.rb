@@ -82,7 +82,7 @@ belongs_to :awayteam, class_name: "UserTeam"
     end
     # shooting probability
     players = team.players.map do |player|
-      [player.name, (player.shooting ** 3)]
+      [player.name, (player.shooting ** 2)]
     end
     outcome = []
     total = 0
@@ -98,7 +98,7 @@ belongs_to :awayteam, class_name: "UserTeam"
     # ******************************
         # do it again for assists, probably can be refactored
     players = team.players.map do |player|
-      [player.name, (player.passing ** 3)]
+      [player.name, (player.passing ** 2)]
     end
     players.delete(hash[:scored_by])
     outcome = []
