@@ -15,6 +15,7 @@ class UserTeamsController < ApplicationController
 
   def create
     @user_team = UserTeam.new(name: params[:name])
+    @user_team.user_id = session[:user_id]
     params[:player_ids].each do |p|
     @user_team.players << Player.find(p)
     end
@@ -31,6 +32,8 @@ class UserTeamsController < ApplicationController
   end
 
   private
+
+
 
   def userteam_params
     params.require(:user_team).permit(:name)
