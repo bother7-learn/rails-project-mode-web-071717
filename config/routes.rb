@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  root :to => 'users#home', as: 'home'
   resources :user_teams, only: [:index, :new, :show, :create]
   resources :matches, only: [:new, :show, :create]
   resources :leagues, only: [:index, :show]
