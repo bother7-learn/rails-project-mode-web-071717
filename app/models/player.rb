@@ -7,4 +7,35 @@ class Player < ApplicationRecord
 
   validates :name, presence: true
   validates :shooting,:passing,:defense,:foul,:dribbling, presence: true
+
+  def goals(userteam)
+    logs = userteam.matches.map do |match|
+      eval(match.final_log)
+    end
+    count = 0
+    goals = logs.each do |log|
+      check = log.each do |key, value|
+        if value != "HALFTIME" && value[:action] == "GOAL" && value[:possession] == userteam.name && value[:scored_by] == self.name
+          count += 1
+        end
+      end
+    end
+    count
+  end
+
+  def assists(userteam)
+    logs = userteam.matches.map do |match|
+      eval(match.final_log)
+    end
+    count = 0
+    goals = logs.each do |log|
+      check = log.each do |key, value|
+        if value != "HALFTIME" && value[:action] == "GOAL" && value[:possession] == userteam.name && value[:assist_by] == self.name
+          count += 1
+        end
+      end
+    end
+    count
+  end
+
 end
