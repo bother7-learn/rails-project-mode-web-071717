@@ -48,12 +48,12 @@ attr_accessor :hometeam, :awayteam
     end
     if result == "foul"
       hash = foul_chance(!team_boolean)
-      gamelog[clock.round(2)] = {action: hash[:result], possession: ball(team_boolean).name, foul_by: hash[:foul_by]}
+      gamelog[perfect_num(clock.round(2))] = {action: hash[:result], possession: ball(team_boolean).name, foul_by: hash[:foul_by]}
     elsif result == "GOAL"
       hash = goal_scorer(team_boolean)
-      gamelog[clock.round(2)] = {action: result, possession: ball(team_boolean).name, scored_by: hash[:scored_by], assist_by: hash[:assist_by]}
+      gamelog[perfect_num(clock.round(2))] = {action: result, possession: ball(team_boolean).name, scored_by: hash[:scored_by], assist_by: hash[:assist_by]}
     else
-      gamelog[clock.round(2)] = {action: result, possession: ball(team_boolean).name}
+      gamelog[perfect_num(clock.round(2))] = {action: result, possession: ball(team_boolean).name}
     end
     clock
   end
@@ -194,13 +194,9 @@ attr_accessor :hometeam, :awayteam
   def perfect_num(float)
       seconds = float.to_s.split('.').last.to_i
       minutes = float.to_s.split('.').first.to_i
-    if seconds > 60
-      a = seconds - 60
-      b= minutes + 1
+      a = seconds * 0.6
+      b= minutes
       (b.to_s + "." + a.to_s).to_f
-    else
-      float
-    end
   end
 
 
