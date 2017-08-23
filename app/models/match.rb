@@ -1,7 +1,6 @@
 class Match < ApplicationRecord
-validates :hometeam, :awayteam, presence: true
-attr_accessor :hometeam, :awayteam
-# belongs_to :team or :userteam
+belongs_to :hometeam, class_name: "UserTeam"
+belongs_to :awayteam, class_name: "UserTeam"
 # possessions can end with turnover, foul, or shot
 # possession increases the timer
 # when timer is > 90, game is over
@@ -10,8 +9,8 @@ attr_accessor :hometeam, :awayteam
     halftime = 0
     eventlog = {}
     base = ["shot", "turnover", "foul"]
-    homeprob = prob(@hometeam, @awayteam)
-    awayprob = prob(@awayteam, @hometeam)
+    homeprob = prob(hometeam, awayteam)
+    awayprob = prob(awayteam, hometeam)
     home_generator = AliasTable.new(base, homeprob)
     away_generator = AliasTable.new(base, awayprob)
     @team_with_ball = false
@@ -41,9 +40,9 @@ attr_accessor :hometeam, :awayteam
     result = generator.generate
     if result == "shot"
       if team_boolean == false
-        result = shooting_chance(@hometeam, @awayteam)
+        result = shooting_chance(hometeam, awayteam)
       else
-        result = shooting_chance(@awayteam, @hometeam)
+        result = shooting_chance(awayteam, hometeam)
       end
     end
     if result == "foul"
@@ -75,9 +74,9 @@ attr_accessor :hometeam, :awayteam
 
   def goal_scorer(team_boolean)
     if team_boolean == false
-      team = @hometeam
+      team = hometeam
     else
-      team = @awayteam
+      team = awayteam
     end
     # shooting probability
     players = team.players.map do |player|
@@ -116,9 +115,9 @@ attr_accessor :hometeam, :awayteam
 
   def ball(theteam)
     if theteam == true
-    @awayteam
+    awayteam
     else
-    @hometeam
+    hometeam
     end
   end
 
