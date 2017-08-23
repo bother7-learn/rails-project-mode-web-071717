@@ -4,7 +4,7 @@ class TeamsController < ApplicationController
     if params[:search]
       arr = []
       Team.all.each do |t|
-        if t.name == params[:search]
+        if t.name.downcase.include?(params[:search].downcase)
           arr << t
           end
         @teams = arr

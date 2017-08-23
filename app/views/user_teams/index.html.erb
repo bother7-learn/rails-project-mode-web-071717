@@ -1,4 +1,8 @@
 <h1> All User Created Teams </h1>
 <% @user_teams.each do |t| %>
-  <li> <%=link_to t.name, t %> </li>
+  <li> <%=link_to t.name, t %> </li><br>
   <% end %>
+
+  <form action= '/user_teams/new'>
+    <input type="submit" value="Create New User Team" />
+</form>

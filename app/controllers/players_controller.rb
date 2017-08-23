@@ -8,7 +8,7 @@ class PlayersController < ApplicationController
     if params[:search]
       arr = []
       Player.all.each do |p|
-        if p.name == params[:search]
+        if p.name.downcase.include?(params[:search].downcase)
           arr << p
         end
         @players = arr
