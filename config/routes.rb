@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   resources :user_teams, only: [:index, :new, :show, :create]
   resources :matches, only: [:new, :show, :create]
   resources :leagues, only: [:index, :show]
-  resources :players, only: [:new, :create, :show, :index]
+  resources :players
   resources :teams, only: [:index, :show]
   get '/signup', to: 'users#new', as: 'signup'
   resources :users, only: [:show, :create]

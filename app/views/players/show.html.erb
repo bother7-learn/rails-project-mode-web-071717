@@ -11,3 +11,7 @@ Defense: <%= @player.defense %><br>
 Foul: <%= @player.foul %><br>
 Dribbling: <%= @player.dribbling %><br>
 Position: <%= @player.position %><br>
+
+<% if @player.user_id == session[:user_id] %>
+<%= link_to "Edit", edit_player_path(@player) %>
+<%end%>

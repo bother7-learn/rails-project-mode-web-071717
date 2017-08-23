@@ -1,3 +1,9 @@
-<h2> <%= "Welcome #{@user.name}" %> <h2>
-  <% link_to "My User Teams", user_teams_path %>
-  
+<h1> <%= "Welcome #{@user.name}" %> </h1>
+    <h2> Players </h2>
+  <% @user.players.each do |p| %>
+  <li><%= link_to p.name, p %>
+    <%end%>
+      <h3> Created Teams </h3>
+    <% @user.user_teams.each do |t| %>
+    <li><%= link_to t.name, t %>
+      <%end%>

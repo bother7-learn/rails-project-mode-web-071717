@@ -4,7 +4,6 @@ class UserTeamsController < ApplicationController
     if session[:user_id]
     @user_team = UserTeam.new
       @players = Player.all
-    render :new
   else
     redirect_to login_path
   end
@@ -28,7 +27,7 @@ class UserTeamsController < ApplicationController
       @user_team.save
       redirect_to user_team_path(@user_team)
     else
-      render :new
+      redirect_to new_user_team_path
     end
   end
 

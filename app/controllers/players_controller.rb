@@ -3,7 +3,7 @@ class PlayersController < ApplicationController
   def new
     if session[:user_id]
     @player = Player.new
-    render :new
+
   else
     redirect_to login_path
   end
@@ -38,6 +38,21 @@ end
 
   def show
     @player = Player.find(params[:id])
+  end
+
+  def edit
+    @player = Player.find_by(user_id: session[:user_id])
+  end
+
+  def update
+    @player= Player.find(params[:id])
+    @player.update(player_params)
+    if @player.valid?
+      @player.save
+      redirect_to player_path(@player)
+    else
+      render :edit
+    end
   end
 
   private
