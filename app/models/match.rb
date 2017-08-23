@@ -192,8 +192,9 @@ attr_accessor :hometeam, :awayteam
   end
 
   def perfect_num(float)
-      seconds = float.to_s.split('.').last.to_i
-      minutes = float.to_s.split('.').first.to_i
+      float = '%.2f' % float
+      seconds = float.split('.').last.to_i
+      minutes = float.split('.').first.to_i
       a = seconds * 0.6
       b= minutes
       (b.to_s + "." + a.to_s).to_f
