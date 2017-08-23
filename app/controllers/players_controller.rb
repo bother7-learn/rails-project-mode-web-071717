@@ -1,7 +1,12 @@
 class PlayersController < ApplicationController
 
   def new
+    if session[:user_id]
     @player = Player.new
+    render :new
+  else
+    redirect_to login_path
+  end
   end
 
   def index
@@ -21,6 +26,9 @@ end
   def create
     @player = Player.new(player_params)
     if @player.valid?
+      if session[:user_id]
+      @player.user = User.find(session[:user_id])
+      end
       @player.save
       redirect_to players_path    #might want to redirect to User_Team_path
     else

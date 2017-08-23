@@ -1,8 +1,13 @@
 class UserTeamsController < ApplicationController
 
   def new
+    if session[:user_id]
     @user_team = UserTeam.new
-    @players = Player.all
+      @players = Player.all
+    render :new
+  else
+    redirect_to login_path
+  end
   end
 
   def index
