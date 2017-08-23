@@ -5,17 +5,29 @@
 
 <ul>
 <%eval(@match.final_log).each do |k,v|%>
-<%if v!= "HALFTIME" && !v.keys.include?(:scored_by)%>
+<%if v!= "HALFTIME" && !v.keys.include?(:scored_by) && !v.keys.include?(:foul_by)%>
           <%if k.to_s.split('.').last.length == 1%>
-          <li><%="At #{k}0 there was a #{v[:action]} for #{v[:possession]}"%></li><br>
+          <li><%="At #{k}0 there was a #{v[:action]} by #{v[:possession]}"%></li><br>
           <%else%>
-          <li><%="At #{k} there was a #{v[:action]} for #{v[:possession]}"%></li><br>
+          <li><%="At #{k} there was a #{v[:action]} by #{v[:possession]}"%></li><br>
           <%end%>
-<%elsif v!= "HALFTIME" && v.keys.include?(:scored_by)%>
+<% elsif v!= "HALFTIME" && v.keys.include?(:foul_by) && (v[:action] != "yellow card" && v[:action] != "red card") %>
+    <%if k.to_s.split('.').last.length == 1%>
+      <li><%="At #{k}0 there was a #{v[:action]} by #{v[:foul_by]}"%></li><br>
+    <%else%>
+    <li><%="At #{k} there was a #{v[:action]} by #{v[:foul_by]}"%></li><br>
+   <%end%>
+   <% elsif v!= "HALFTIME" && v.keys.include?(:foul_by) && (v[:action] == "yellow card" || v[:action] == "red card") %>
+       <%if k.to_s.split('.').last.length == 1%>
+         <li><%="At #{k}0 #{v[:foul_by]} was given a #{v[:action]}"%></li><br>
+       <%else%>
+       <li><%="At #{k} #{v[:foul_by]} was given a #{v[:action]}"%></li><br>
+      <%end%>
+  <%elsif v!= "HALFTIME" && v.keys.include?(:scored_by)%>
           <%if k.to_s.split('.').last.length == 1 %>
             <li><%="At #{k}0 #{v[:scored_by]} scored for #{v[:possession]}!!! Goooooooaaaaaaaaaaal!!!!!!"%></li><br>
           <%else%>
-  <li><%="At #{k} #{v[:scored_by]} scored for #{v[:possession]}!!! Goooooooaaaaaaaaaaal!!!!!!" %></li><br>
+  <li><%="At #{k} #{v[:scored_by]} scored for #{v[:possession]}!!! Goooooooaaaaaaaaaaal!!!!!!. Assisted by #{v[:assist_by]}" %></li><br>
   <%end%>
   <%elsif v== "HALFTIME" %>
   <li><%= "It is now Halftime"%></li><br>
