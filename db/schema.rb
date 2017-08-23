@@ -43,7 +43,6 @@ ActiveRecord::Schema.define(version: 20170823175554) do
     t.integer "defense"
     t.integer "foul"
     t.integer "dribbling"
-    t.integer "user_team_id"
     t.string "position"
     t.integer "user_id"
   end

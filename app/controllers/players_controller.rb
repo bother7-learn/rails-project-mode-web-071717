@@ -43,7 +43,7 @@ end
   private
 
   def player_params
-    params.require(:player).permit(:name,:shooting,:passing,:defense,:foul,:dribbling)
+    params.require(:player).permit(:name,:shooting,:passing,:defense,:foul,:dribbling, :position)
   end
 
 end

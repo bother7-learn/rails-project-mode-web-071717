@@ -2,7 +2,7 @@
     <% if @player.team %>
   League: <%= link_to @player.league.name, league_path(@player.league) %><br>
   Team: <%= link_to @player.team.name, team_path(@player.team) %><br>
-  Position: <%= @player.position %><br>
+
     <%end%>
 <h2> Stats </h2>
 Scoring: <%= @player.shooting %><br>
@@ -10,3 +10,4 @@ Passing: <%= @player.passing %><br>
 Defense: <%= @player.defense %><br>
 Foul: <%= @player.foul %><br>
 Dribbling: <%= @player.dribbling %><br>
+Position: <%= @player.position %><br>

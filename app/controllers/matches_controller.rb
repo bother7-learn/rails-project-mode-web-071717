@@ -1,13 +1,10 @@
 class MatchesController < ApplicationController
 
   def new
-    if session[:user_id]
     @match = Match.new
     @teams = Team.all
     @user_teams = UserTeam.all
     render :new
-  else
-    redirect_to signin_path
   end
 
   def create
