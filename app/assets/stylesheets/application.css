@@ -67,6 +67,37 @@ div.bigleft {
     overflow-y: auto;
     max-height:450px;
 }
+
+div.bigleftloss {
+    float: left;
+    display: block;
+    background-color: #8B0000;
+    opacity: .7;
+    max-width:500px;
+    padding: 25px;
+    margin: 25px;
+    border-radius: 10px;
+    color: white;
+    overflow-y: auto;
+    max-height:450px;
+}
+
+div.biglefttie {
+    float: left;
+    display: block;
+    background-color: #1E90FF;
+    opacity: .7;
+    max-width:500px;
+    padding: 25px;
+    margin: 25px;
+    border-radius: 10px;
+    color: white;
+    overflow-y: auto;
+    max-height:450px;
+}
+
+
+
 div.standings {
     float: left;
     display: block;
