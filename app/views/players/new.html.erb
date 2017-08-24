@@ -1,10 +1,11 @@
+<div class = "bigleft" >
 <h1> Create Player Here </h1>
 <%= form_for @player do |f| %>
 <%if @player.errors.any? %>
 <h2> Errors:</h2>
 <ul>
 <%@player.errors.full_messages.each do |message| %>
-    <li><%= message %></li>
+    <li style="color:red"><%= message %></li>
       <%end%>
     </ul>
     <%end%>
@@ -24,3 +25,4 @@
 <%= f.select :position, [ 'forward','midfielder','defender','goalie' ], :prompt => 'Select One' %>
 <%= f.submit %>
 <% end %>
+</div>
