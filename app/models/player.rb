@@ -54,4 +54,11 @@ class Player < ApplicationRecord
     count
   end
 
+  def salary
+    sum = self.shooting ** 2 + self.passing ** 2 + self.defense ** 2 + self.dribbling ** 2 - self.foul
+    sum = 29000 if sum > 29000
+    self.contract = (sum * 0.000689).to_i
+    self.save
+  end
+
 end

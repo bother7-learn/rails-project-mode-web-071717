@@ -18,7 +18,7 @@ class UserTeam < ApplicationRecord
   end
 
   def totalsalary
-    self.errors[:salary] << " is Over Team Budget by #{self.salary - 100}" unless (self.salary <= 100)
+    self.errors[:salary] << " is Over Team Budget by #{self.salary - 125}" unless (self.salary <= 125)
   end
 
   def win_loss_record

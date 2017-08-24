@@ -60,9 +60,9 @@ ActiveRecord::Schema.define(version: 20170824151501) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "user_id"
-    t.integer "wins"
-    t.integer "losses"
-    t.integer "ties"
+    t.integer "wins", default: 0
+    t.integer "losses", default: 0
+    t.integer "ties", default: 0
   end
 
   create_table "users", force: :cascade do |t|
