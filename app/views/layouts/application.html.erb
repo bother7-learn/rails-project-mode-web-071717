@@ -11,7 +11,11 @@
   <body>
 </head>
   <ul class="nav">
+    <% if !current_user %>
       <li class="nav"><%= link_to "Home",   home_path %></li>
+      <% else %>
+      <li class="nav"><%= link_to "Home",   user_path(current_user) %></li>
+      <% end %>
     <li class="nav"><%= link_to "Teams",   teams_path %></li>
     <li class="nav"><%= link_to "Players", players_path %></li>
     <li class="nav"><%= link_to "Match", new_match_path %></li>
