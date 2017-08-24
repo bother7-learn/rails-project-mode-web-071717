@@ -65,6 +65,20 @@ div.bottomleft {
     border-radius: 10px;
     color: white;
 }
+div.topleft {
+  position: float;
+  top: 0;
+  left: 0;
+    display: block;
+    background-color: #001a00;
+    opacity: 0.9;
+    max-width:500px;
+    padding: 15px;
+    margin: 15px;
+    border-radius: 10px;
+    color: white;
+      text-align: center;
+}
 h1.big {
     font-size: 40px;
 }
@@ -88,4 +102,16 @@ a {
 
 h1 {
  color: white;
+}
+
+input[type=button], input[type=submit], input[type=reset] {
+    background-color: white;
+    border: none;
+    color: black;
+    padding: 16px 32px;
+    text-decoration: none;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 4px;
+    font-size: 15px;
 }

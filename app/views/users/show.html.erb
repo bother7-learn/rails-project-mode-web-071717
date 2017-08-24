@@ -1,3 +1,4 @@
+<div class="bigleft">
 <% if @user == current_user %>
 <h1> <%= "Welcome #{@user.name}!" %> </h1>
     <h3> Your Created Players </h3>
@@ -19,3 +20,4 @@
       <li><%= link_to t.name, t %>
         <%end%>
         <%end%>
+</div>

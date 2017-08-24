@@ -1,6 +1,14 @@
-<h1> Pick 2 Teams to vs Each other </h1>
+
 <%=form_tag '/matches' do |m| %>
-Home Team: <%=select_tag 'home_user_team_id', options_for_select(@user_teams.collect{ |t| [t.name, t.id] }),:include_blank => true%><br>
-Away Team: <%=select_tag 'away_user_team_id', options_for_select(@user_teams.collect{ |t| [t.name, t.id] }),:include_blank => true%><br>
+<div class="topleft">
+<h1 align="center"> Pick Two Teams </h1>
 <%= submit_tag "Simulate!" %>
+</div>
+<div class="bigleft">
+Home Team: <%=select_tag 'home_user_team_id', options_for_select(@user_teams.collect{ |t| [t.name, t.id] }),:include_blank => true%><br>
+</div>
+<div class="bigleft">
+Away Team: <%=select_tag 'away_user_team_id', options_for_select(@user_teams.collect{ |t| [t.name, t.id] }),:include_blank => true%><br>
+</div>
+
 <% end %>
