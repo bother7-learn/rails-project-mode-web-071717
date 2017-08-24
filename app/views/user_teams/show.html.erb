@@ -22,7 +22,8 @@
   <th><%= p.assists(@user_team) %> </th>
   </tr>
   <% end %>
-  <% if @user_team.user_id == session[:user_id] %>
+
+  <% if @user_team.user_id == session[:user_id] && @user_team.user_id != nil %>
   <%= link_to "Edit Team", edit_user_team_path(@user_team) %>
   <%= link_to "Delete this Team", @user_team, method: :delete %>
   <% end %>
@@ -35,6 +36,6 @@
 <h2> created by: <%= link_to @user_team.user.name, user_path(@user_team.user)%> <h2>
   <% end %>
   <h1> <%= @user_team.win_loss_record %> </h1>
-  <%end%>
+
 
 </div>
