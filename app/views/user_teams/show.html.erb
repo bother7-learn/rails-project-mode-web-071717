@@ -18,7 +18,8 @@
   <th><%= p.assists(@user_team) %> </th>
   </tr>
   <% end %>
-  <% if @user_team.user_id == session[:user_id] %>
+
+  <% if @user_team.user_id == session[:user_id] && @user_team.user_id != nil %>
   <%= link_to "Edit Team", edit_user_team_path(@user_team) %>
   <%= link_to "Delete this Team", @user_team, method: :delete %>
   <% end %>
