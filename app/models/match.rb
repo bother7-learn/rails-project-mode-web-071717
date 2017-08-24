@@ -1,11 +1,11 @@
 class Match < ApplicationRecord
 belongs_to :hometeam, class_name: "UserTeam"
 belongs_to :awayteam, class_name: "UserTeam"
-validate :same_team
+validate :same_team?
 
-# def same_team?
-#   :hometeam != :awayteam
-# end
+def same_team?
+  self.errors.add(:hometeam, message: "Home and Away Can't be Same Team") unless hometeam != awayteam
+end
 
 # when timer is > 90, game is over
   def simulate

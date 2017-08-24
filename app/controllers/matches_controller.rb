@@ -16,10 +16,18 @@ class MatchesController < ApplicationController
    # away = Team.find(params[:away_team_id]) or UserTeam.find(params[:away_user_team_id])
    @match.hometeam = home
    @match.awayteam = away
-
-   @match.simulate
-   @match.save
-   redirect_to match_path(@match)
+   if @match.valid?
+     @match.simulate
+     @match.save
+     redirect_to match_path(@match)
+   else
+     if @match.errors.messages[:hometeam]
+       flash[:message] = @match.errors.full_messages
+    else
+      flash[:message] = @match.errors.full_messages
+     end
+     redirect_to new_match_path
+   end
   end
 
   def show
