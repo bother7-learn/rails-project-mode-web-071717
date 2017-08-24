@@ -55,6 +55,12 @@ end
     end
   end
 
+  def destroy
+    @player= Player.find(params[:id])
+    @player.destroy
+    redirect_to players_path
+  end
+
   private
 
   def player_params

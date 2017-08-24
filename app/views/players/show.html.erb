@@ -2,8 +2,12 @@
     <% if @player.team %>
   League: <%= link_to @player.league.name, league_path(@player.league) %><br>
   Team: <%= link_to @player.team.name, team_path(@player.team) %><br>
+<%end%>
 
-    <%end%>
+<% if @player.user_id != nil %>
+Created By: <%= link_to @player.user.name, user_path(@player.user)%>
+<%end%>
+
 <h2> Stats </h2>
 Scoring: <%= @player.shooting %><br>
 Passing: <%= @player.passing %><br>
@@ -14,4 +18,5 @@ Position: <%= @player.position %><br>
 
 <% if @player.user_id == session[:user_id] %>
 <%= link_to "Edit", edit_player_path(@player) %>
+<%= link_to "Delete Player", @player, :confirm =>"Are you sure?", method: :delete%>
 <%end%>

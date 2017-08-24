@@ -1,11 +1,16 @@
 <h1> <%= @user_team.name %> </h1>
 <h2> <%= @user_team.win_loss_record %> </h2>
+
+
+Created By: <%= link_to @user_team.user.name, user_path(@user_team.user)%>
+
 <ol>
   <% @user_team.players.each do |p| %>
-  <li><%= link_to p.name, player_path(p) %> Position: <%= p.position %> Goals: <%= p.goals(@user_team)%> Shots: <%= p.shots(@user_team) %> Assists: <%= p.assists(@user_team) %></li>
+  <li><%= link_to p.name, player_path(p) %> Position: <%= p.position %> Goals: <%= p.goals(@user_team)%> Shots: <%= p.shots(@user_team) %> Assists: <%= p.assists(@user_team) %></li><br>
   <% end %>
 
   <% if @user_team.user_id == session[:user_id] %>
   <%= link_to "Edit Team", edit_user_team_path(@user_team) %>
+  <%= link_to "Delete this Team", @user_team, method: :delete %>
   <% end %>
 </ol>

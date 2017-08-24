@@ -1,9 +1,21 @@
-<h1> <%= "Welcome #{@user.name}" %> </h1>
-    <h2> Players </h2>
+<% if @user == current_user %>
+<h1> <%= "Welcome #{@user.name}!" %> </h1>
+    <h3> Your Created Players </h3>
   <% @user.players.each do |p| %>
   <li><%= link_to p.name, p %>
     <%end%>
-      <h3> Created Teams </h3>
+      <h3> Your Created Teams </h3>
     <% @user.user_teams.each do |t| %>
     <li><%= link_to t.name, t %>
       <%end%>
+
+      <%else%>
+      <h3> <%=@user.name%>'s Created Players </h3>
+    <% @user.players.each do |p| %>
+    <li><%= link_to p.name, p %>
+      <%end%>
+        <h3> <%=@user.name%>'s Created Teams </h3>
+      <% @user.user_teams.each do |t| %>
+      <li><%= link_to t.name, t %>
+        <%end%>
+        <%end%>

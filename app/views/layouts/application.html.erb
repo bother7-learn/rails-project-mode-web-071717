@@ -21,7 +21,7 @@
             <li><%= link_to "Login", login_path %></li>
             <li><%= link_to "Signup", signup_path%></li>
             <%else%>
-            <li><%= link_to current_user.name, user_path(current_user)%></li>
+            <li><%= link_to "Logged in as #{current_user.name}", user_path(current_user)%></li>
             <%end%>
             <%if current_user %>
             <li><%= link_to "Logout", logout_path %></li>
