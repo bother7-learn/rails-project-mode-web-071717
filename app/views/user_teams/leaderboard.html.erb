@@ -7,6 +7,7 @@
       <th>Wins</th>
       <th>Losses</th>
       <th>Ties</th>
+      <th>Salary</th>
     </tr>
 
 <% @user_teams.each do |team| %>
@@ -16,6 +17,7 @@
 <th> <%= team.wins %> </th>
 <th> <%= team.losses %> </th>
 <th> <%= team.ties %> </th>
+<th> <%= team.salary %> </th>
 </tr>
 <% end %>
 </table>

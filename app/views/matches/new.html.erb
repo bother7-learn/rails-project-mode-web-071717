@@ -2,10 +2,10 @@
 <%=form_tag '/matches' do |m| %>
 <div class="topleft">
 <h1 align="center"> Pick Two Teams </h1>
-<%if flash[:message]%>
-<%flash[:message].each do |m|%>
-<li style="color:red;margin-top:2px;margin-bottom:2px;"><%=m%></li>
-<%end%>
+<% if flash[:message] %>
+<% flash[:message].each do |m| %>
+<p style="color:red;margin-top:2px;padding-bottom:6px;"><%=m%></p>
+<% end %>
 <% end %>
 <%= submit_tag "Simulate!" %>
 </div>

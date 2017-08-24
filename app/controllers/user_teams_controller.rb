@@ -29,7 +29,9 @@ class UserTeamsController < ApplicationController
     @user_team = UserTeam.new(name: params[:name])
     @user_team.user_id = session[:user_id]
     params[:player_ids].each do |p|
+    if p != ""
     @user_team.players << Player.find(p)
+    end
     end
     if @user_team.valid?
       @user_team.save

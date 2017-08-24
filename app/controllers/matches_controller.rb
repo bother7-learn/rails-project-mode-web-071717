@@ -21,11 +21,7 @@ class MatchesController < ApplicationController
      @match.save
      redirect_to match_path(@match)
    else
-     if @match.errors.messages[:hometeam]
-       flash[:message] = @match.errors.full_messages
-    else
       flash[:message] = @match.errors.full_messages
-     end
      redirect_to new_match_path
    end
   end

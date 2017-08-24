@@ -4,7 +4,7 @@ belongs_to :awayteam, class_name: "UserTeam"
 validate :same_team?
 
 def same_team?
-  self.errors.add(:hometeam, message: "Home and Away Can't be Same Team") unless hometeam != awayteam
+  self.errors[:home] << " and Away Can't be Same Team" unless hometeam != awayteam
 end
 
 # when timer is > 90, game is over
