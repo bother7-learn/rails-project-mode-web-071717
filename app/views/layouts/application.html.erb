@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Module2Final</title>
+    <title>Fantasy Futbol</title>
     <%= csrf_meta_tags %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
@@ -9,28 +9,28 @@
   </head>
 
   <body>
-    <header class="navbar navbar-fixed-top navbar-inverse">
-      <div class="container">
-        <nav>
-          <ul class="nav navbar-nav navbar-right">
-            <li><%= link_to "Teams",   teams_path %></li>
-            <li><%= link_to "Players", players_path %></li>
-            <li><%= link_to "Match", new_match_path %></li>
-            <li><%= link_to "User Teams", user_teams_path %></li>
-            <%if !current_user %>
-            <li><%= link_to "Login", login_path %></li>
-            <li><%= link_to "Signup", signup_path%></li>
-            <%else%>
-            <li><%= link_to current_user.name, user_path(current_user)%></li>
-            <%end%>
-            <%if current_user %>
-            <li><%= link_to "Logout", logout_path %></li>
-            <%end%>
-          </ul>
-        </nav>
-      </div>
+</head>
+  <ul class="nav">
+      <li class="nav"><%= link_to "Home",   home_path %></li>
+    <li class="nav"><%= link_to "Teams",   teams_path %></li>
+    <li class="nav"><%= link_to "Players", players_path %></li>
+    <li class="nav"><%= link_to "Match", new_match_path %></li>
+    <li class="nav"><%= link_to "User Teams", user_teams_path %></li>
+
+    <%if current_user %>
+    <li class="nav" style="float:right"><%= link_to "Logout", logout_path %></li>
+    <%end%>
+    <%if !current_user %>
+    <li class="nav" style="float:right"><%= link_to "Login", login_path %></li>
+    <li class="nav" style="float:right"><%= link_to "Signup", signup_path%></li>
+    <%else%>
+    <li class="nav" style="float:right"><%= link_to current_user.name, user_path(current_user)%></li>
+    <%end%>
+  </ul>
     </header>
-    <div class="container">
+
+
+  <body>
     <%= yield %>
   </body>
 </html>

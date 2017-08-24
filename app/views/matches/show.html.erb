@@ -1,9 +1,10 @@
+<div class="bigleft">
 <%=@match.hometeam.name%>: <%=@match.home_goals %><br>
 <%=@match.awayteam.name%>: <%=@match.away_goals %><br>
-<br>
+</div>
 
 
-<ul>
+<div class="matchright">
 <%eval(@match.final_log).each do |k,v|%>
 
 
@@ -40,5 +41,4 @@
 <%end%>
 <%end%>
  </ul>
-
- <%=@match.final_log%>
+</div>

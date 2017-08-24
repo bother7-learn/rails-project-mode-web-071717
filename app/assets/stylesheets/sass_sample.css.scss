@@ -6,6 +6,9 @@ $cpad: 20px;		/* Variables are not limited to colors, you can use it to store va
 
 
 body {
+  background-image: url("soccer_grass_1.jpeg");
+  background-size: cover;
+  background-position: fixed;
   font-family: Arial, Helvetica, sans-serif;
 }
 

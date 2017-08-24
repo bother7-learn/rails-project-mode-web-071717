@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
 
   def home
-    redirect_to new_match_path
+    
   end
 
   def new

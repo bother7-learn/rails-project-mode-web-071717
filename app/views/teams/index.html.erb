@@ -1,4 +1,6 @@
-<h1> All FIFA Teams </h1>
+
+<div class="bigleft">
+<h1 align="center"> All FIFA Teams </h1>
 <%= form_tag(teams_path, :method => "get", id: "search-form") do %>
     <%= text_field_tag :search, params[:search], placeholder: "Search By Team Name" %>
     <%= submit_tag "Search", :name => nil %>
@@ -8,3 +10,4 @@
 <li><%=link_to t.name, team_path(t)%></li>
 <%end%>
 </ol>
+</div>
