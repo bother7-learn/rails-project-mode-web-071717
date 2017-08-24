@@ -1,5 +1,13 @@
 <h1> Create Player Here </h1>
 <%= form_for @player do |f| %>
+<%if @player.errors.any? %>
+<h2> Errors:</h2>
+<ul>
+<%@player.errors.full_messages.each do |message| %>
+    <li><%= message %></li>
+      <%end%>
+    </ul>
+    <%end%>
 <%= f.label :name %>
 <%= f.text_field :name %><br>
 <%= f.label :shooting %>
