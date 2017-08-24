@@ -1,4 +1,11 @@
+<div class = "bigleft">
 <h1> Create Your Own Team! </h1>
+<%if flash[:message]%>
+<%flash[:message].each do |m|%>
+<li style="color:red"><%=m%></li>
+<%end%>
+<%end%>
+
 <%=form_tag "/user_teams" do %>
 <h2> Name of Your Team: <%= text_field_tag "name" %></h2>
 Pick one Attacker: <%=select_tag 'player_ids[]', options_for_select(@players.where("position = 'forward'").collect{ |u| [u.name, u.id] })%><br>
@@ -14,3 +21,4 @@ Pick one Defender: <%=select_tag 'player_ids[]', options_for_select(@players.whe
 Pick one Goalie: <%=select_tag 'player_ids[]', options_for_select(@players.where("position = 'goalie'").collect{ |u| [u.name, u.id] })%><br>
 <%= submit_tag "Create Team" %>
 <% end %>
+</div>

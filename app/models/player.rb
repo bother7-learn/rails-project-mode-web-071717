@@ -6,7 +6,7 @@ class Player < ApplicationRecord
   delegate :league, to: :team, allow_nil: true
 
   validates :name, presence: true
-  validates :shooting,:passing,:defense,:foul,:dribbling, presence: true
+  validates :shooting,:passing,:defense,:foul,:dribbling,:position, presence: true
 
   def goals(userteam)
     logs = userteam.matches.map do |match|

@@ -1,5 +1,13 @@
 <h1> Create a User </h1>
 <%= form_for @user do |t| %>
+<%if @user.errors.any? %>
+<h2> Errors:</h2>
+<ul>
+<%@user.errors.full_messages.each do |message| %>
+    <li> <%= message %> </li>
+      <%end%>
+    </ul>
+    <%end%>
 <%= t.label :name %>
 <%= t.text_field :name %>
 <%= t.label :password %>

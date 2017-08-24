@@ -27,6 +27,7 @@ class UserTeamsController < ApplicationController
       @user_team.save
       redirect_to user_team_path(@user_team)
     else
+      flash[:message] = @user_team.errors.full_messages
       redirect_to new_user_team_path
     end
   end
