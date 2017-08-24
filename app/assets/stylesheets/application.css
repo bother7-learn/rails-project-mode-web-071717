@@ -13,6 +13,21 @@
  *= require_tree .
  *= require_self
  */
+ table, td, th {
+     border: 2px black;
+ }
+table {
+  width: 100%;
+  font-size: 18px;
+}
+
+th, td {
+    padding: 5px;
+    text-align: right;
+}
+
+tr:nth-child(even){background-color: black}
+
 ul.nav {
  list-style-type: none;
  margin: 0;
@@ -45,6 +60,19 @@ div.bigleft {
     background-color: #001a00;
     opacity: 0.9;
     max-width:500px;
+    padding: 25px;
+    margin: 25px;
+    border-radius: 10px;
+    color: white;
+    overflow-y: auto;
+    max-height:450px;
+}
+div.standings {
+    float: left;
+    display: block;
+    background-color: #001a00;
+    opacity: 0.9;
+    max-width:800px;
     padding: 25px;
     margin: 25px;
     border-radius: 10px;

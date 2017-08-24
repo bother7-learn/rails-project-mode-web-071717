@@ -1,6 +1,18 @@
 <div class="bigleft">
-<%=@match.hometeam.name%>: <%=@match.home_goals %><br>
-<%=@match.awayteam.name%>: <%=@match.away_goals %><br>
+<h2 align="right"><%=@match.hometeam.name%>: <%=@match.home_goals %></h2>
+<table>
+<% @match.hometeam.players.each do |player| %>
+<tr><th style="font-size:14px;"><%= player.name %></th></tr>
+<% end %>
+</table>
+</div>
+<div class="bigleft">
+<h2 align="right"><%=@match.awayteam.name%>: <%=@match.away_goals %><br></h2>
+<table>
+<% @match.awayteam.players.each do |player| %>
+<tr><th style="font-size:14px;"><%= player.name %></th></tr>
+<% end %>
+</table>
 </div>
 
 

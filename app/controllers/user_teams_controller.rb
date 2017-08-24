@@ -9,6 +9,14 @@ class UserTeamsController < ApplicationController
   end
   end
 
+  def leaderboard
+  user_teams = UserTeam.all
+  user_teams.each do |team|
+    team.win_loss_record
+  end
+  @user_teams = user_teams.order(wins: :desc)
+  end
+
   def index
     @user_teams = UserTeam.all
   end
