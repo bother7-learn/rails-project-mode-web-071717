@@ -1,1 +1,22 @@
-Leaderboardzzz
+<div class="standings">
+<h1 align="center">Leaderboard</h1>
+  <table>
+    <tr>
+      <th>Team Name</th>
+      <th>User Name</th>
+      <th>Wins</th>
+      <th>Losses</th>
+      <th>Ties</th>
+    </tr>
+
+<% @user_teams.each do |team| %>
+<tr>
+<th><%= link_to team.name, user_team_path(team) %> </th>
+<th> <%= link_to team.user.name, user_path(team.user) if team.user %> </th>
+<th> <%= team.wins %> </th>
+<th> <%= team.losses %> </th>
+<th> <%= team.ties %> </th>
+</tr>
+<% end %>
+</table>
+</div>

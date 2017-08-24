@@ -48,7 +48,7 @@ players = [
   {name:"Arturo Vidal",shooting:70, passing:80, defense:80, foul:8, dribbling:80, team_id:8, position: "midfielder"},
   {name:"Marco Asensio",shooting:75, passing:80, defense:65, foul:4, dribbling:80, team_id:1, user_team_ids: [1], position: "midfielder"},
   {name:"Alexis Sanchez",shooting:85, passing:90, defense:55, foul:4, dribbling:80, team_id:3, position: "forward"},
-  {name:"Luis Suarez",shooting:92, passing:90, defense:35, foul:8, dribbling:80, team_id:2, position: "forward"},
+  {name:"Luis Suarez",shooting:92, passing:90, defense:35, foul:8, dribbling:80, team_id:2, user_team_ids: [2], position: "forward"},
   {name:"Paul Pogba",shooting:75, passing:90, defense:75, foul:9, dribbling:80, team_id:3, position: "midfielder"},
   {name:"Antoine Griezmann",shooting:80, passing:90, defense:40, foul:15, dribbling:80, team_id:7, position: "forward"},
   {name:"Fernando Torres",shooting:75, passing:90, defense:25, foul:15, dribbling:80, team_id:7, position: "forward"},

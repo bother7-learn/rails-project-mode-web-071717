@@ -35,8 +35,12 @@ class UserTeam < ApplicationRecord
     totalrecord = homerecord + awayrecord
 
     wins = totalrecord.select {|result| result == "win"}
+    self.wins = wins.size
     losses = totalrecord.select {|result| result == "loss"}
+    self.losses = losses.size
     ties = totalrecord.select {|result| result == "tie"}
+    self.ties = ties.size
+    self.save
     string = "#{wins.size} Wins - #{losses.size} Losses - #{ties.size} Ties"
   end
 
