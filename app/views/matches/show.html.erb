@@ -1,16 +1,45 @@
+<%if @match.home_goals > @match.away_goals%>
 <div class="bigleft">
+<%elsif @match.away_goals == @match.home_goals%>
+  <div class="biglefttie">
+  <%else%>
+<div class="bigleftloss">
+  <%end%>
 <h2 align="right"><%=@match.hometeam.name%>: <%=@match.home_goals %></h2>
 <table>
-<% @match.hometeam.players.each do |player| %>
-<tr><th style="font-size:14px;"><%= player.name %></th></tr>
+  <tr>
+    <th> Name </th>
+    <th> Position </th>
+  </tr>
+<% @match.hometeam.players.order('position').each do |player| %>
+<tr>
+  <th style="font-size:14px;"><%= player.name %></th>
+  <th style="font-size:14px;"><%= player.position %></th>
+</tr>
+
 <% end %>
 </table>
 </div>
+
+<%if @match.away_goals > @match.home_goals%>
 <div class="bigleft">
+  <%elsif @match.away_goals == @match.home_goals%>
+  <div class="biglefttie">
+    <%else%>
+<div class="bigleftloss">
+  <%end%>
 <h2 align="right"><%=@match.awayteam.name%>: <%=@match.away_goals %><br></h2>
 <table>
-<% @match.awayteam.players.each do |player| %>
-<tr><th style="font-size:14px;"><%= player.name %></th></tr>
+
+  <tr>
+    <th> Name </th>
+    <th> Position </th>
+  </tr>
+  <% @match.awayteam.players.order('position').each do |player| %>
+  <tr>
+  <th style="font-size:14px;"><%= player.name %></th>
+  <th style="font-size:14px;"><%= player.position %></th>
+  </tr>
 <% end %>
 </table>
 </div>

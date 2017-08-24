@@ -33,7 +33,7 @@ teams = [
 teams.each {|t| Team.create(t)}
 
 userteams = [{name: "Real Madrid"},
-{name: "Barcelona"} ]
+{name: "Barcelona"},{name: "Liverpool"} ]
 
 userteams.each {|t| UserTeam.create(t)}
 # {name:,shooting:, passing:, defense:, foul:, dribbling:, team_id:, position:},
@@ -63,24 +63,24 @@ players = [
   {name: "Sergi Roberto", shooting:70, passing:88, defense:75, foul:30, dribbling:80, team_id:2, contract:4, user_team_ids: [2], position: "midfielder"},
   {name: "Gerard Deulofeu", shooting:88, passing:75, defense:30, foul:15, dribbling:72, team_id:2, contract:4, user_team_ids: [2], position: "forward"},
   {name: "Keylor Navas", shooting:20, passing:60, defense:88, foul:34, dribbling:30, team_id:1, contract:4, user_team_ids: [1], position:"goalie"},
-  {name: "Marcelo",shooting:60, passing:73, defense:85, foul:30, dribbling:60, team_id:1, contract:4, user_team_ids: [1], position:"defender"},
-  {name: "Isco",shooting:70, passing:90, defense:48, foul:32, dribbling:85, team_id:1, contract:4, user_team_ids: [1], position:"midfielder"},
-  {name: "Nacho",shooting:40, passing:72, defense:92, foul:40, dribbling:64, team_id:1, contract:4, user_team_ids: [1], position: "defender"},
-  {name: "Toni Kroos",shooting:30, passing:80, defense:75, foul:38, dribbling:75, team_id:1, contract:4, user_team_ids: [1], position: "midfielder"},
-  {name: "Dani Carvajal",shooting:40, passing:75, defense:89, foul:34, dribbling:60, team_id:1, contract:4, user_team_ids: [1], position:"defender"},
-  {name: "Casemiro",shooting: 70, passing:75 , defense:85, foul:40, dribbling:60, team_id:1, contract:4, user_team_ids: [1], position:"midfielder"},
-  {name: "Gareth Bale",shooting:92, passing:84, defense:50, foul:25, dribbling:87, team_id:1, contract:4, user_team_ids: [1], position:"forward"},
-  {name: "Sadio Mane",shooting:93, passing:92, defense:48, foul:10, dribbling:96, team_id:1, contract:4, user_team_ids: [3], position:"forward"},
-  {name: "Adam Lallana",shooting:89, passing:92, defense:73, foul:15, dribbling:95, team_id:1, contract:4, user_team_ids: [3], position:"midfielder"},
-  {name: "Daniel Sturridge",shooting:86, passing:74, defense:35, foul:15, dribbling:85, team_id:1, contract:4, user_team_ids: [3], position:"forward"},
-  {name: "James Milner",shooting:82, passing:89, defense:80, foul:15, dribbling:85, team_id:1, contract:4, user_team_ids: [3], position:"defender"},
-  {name: "Loris Karius",shooting:30, passing:84, defense:80, foul:1, dribbling:55, team_id:1, contract:4, user_team_ids: [3], position:"goalie"},
-  {name: "Emre Can",shooting:83, passing:88, defense:88, foul:15, dribbling:87, team_id:1, contract:4, user_team_ids: [3], position:"midfielder"},
-  {name: "Roberto Firmino",shooting:85, passing:87, defense:52, foul:15, dribbling:90, team_id:1, contract:4, user_team_ids: [3], position:"forward"},
-  {name: "Ragnar Klavan",shooting:48, passing:63, defense:79, foul:15, dribbling:62, team_id:1, contract:4, user_team_ids: [3], position:"defender"},
-  {name: "Mamadou Sakho",shooting:33, passing:62, defense:50, foul:25, dribbling:56, team_id:1, contract:4, user_team_ids: [3], position:"defender"},
-  {name: "Jordan Henderson",shooting:33, passing:62, defense:50, foul:15, dribbling:56, team_id:1, contract:4, user_team_ids: [3], position:"forward"},
-  {name: "Gareth Bale",shooting:92, passing:84, defense:50, foul:25, dribbling:87, team_id:1, contract:4, user_team_ids: [3], position:"forward"},
+  {name: "Marcelo",shooting:60, passing:73, defense:85, foul:30, dribbling:60, team_id:6, contract:4, user_team_ids: [1], position:"defender"},
+  {name: "Isco",shooting:70, passing:90, defense:48, foul:32, dribbling:85, team_id:6, contract:4, user_team_ids: [1], position:"midfielder"},
+  {name: "Nacho",shooting:40, passing:72, defense:92, foul:40, dribbling:64, team_id:6, contract:4, user_team_ids: [1], position: "defender"},
+  {name: "Toni Kroos",shooting:30, passing:80, defense:75, foul:38, dribbling:75, team_id:6, contract:4, user_team_ids: [1], position: "midfielder"},
+  {name: "Dani Carvajal",shooting:40, passing:75, defense:89, foul:34, dribbling:60, team_id:6, contract:4, user_team_ids: [1], position:"defender"},
+  {name: "Casemiro",shooting: 70, passing:75 , defense:85, foul:40, dribbling:60, team_id:6, contract:4, user_team_ids: [1], position:"midfielder"},
+  {name: "Gareth Bale",shooting:92, passing:84, defense:50, foul:25, dribbling:87, team_id:6, contract:4, user_team_ids: [1], position:"forward"},
+  {name: "Sadio Mane",shooting:93, passing:92, defense:48, foul:10, dribbling:96, team_id:6, contract:4, user_team_ids: [3], position:"forward"},
+  {name: "Adam Lallana",shooting:89, passing:92, defense:73, foul:15, dribbling:95, team_id:6, contract:4, user_team_ids: [3], position:"midfielder"},
+  {name: "Daniel Sturridge",shooting:86, passing:74, defense:35, foul:15, dribbling:85, team_id:6, contract:4, user_team_ids: [3], position:"forward"},
+  {name: "James Milner",shooting:82, passing:89, defense:80, foul:15, dribbling:85, team_id:6, contract:4, user_team_ids: [3], position:"defender"},
+  {name: "Loris Karius",shooting:30, passing:84, defense:80, foul:1, dribbling:55, team_id:6, contract:4, user_team_ids: [3], position:"goalie"},
+  {name: "Emre Can",shooting:83, passing:88, defense:88, foul:15, dribbling:87, team_id:6, contract:4, user_team_ids: [3], position:"midfielder"},
+  {name: "Roberto Firmino",shooting:85, passing:87, defense:52, foul:15, dribbling:90, team_id:6, contract:4, user_team_ids: [3], position:"forward"},
+  {name: "Ragnar Klavan",shooting:48, passing:63, defense:79, foul:15, dribbling:62, team_id:6, contract:4, user_team_ids: [3], position:"defender"},
+  {name: "Mamadou Sakho",shooting:33, passing:62, defense:50, foul:25, dribbling:56, team_id:6, contract:4, user_team_ids: [3], position:"defender"},
+  {name: "Jordan Henderson",shooting:33, passing:62, defense:50, foul:15, dribbling:56, team_id:6, contract:4, user_team_ids: [3], position:"midfielder"},
+  {name: "Lucas Leiva",shooting:39, passing:70, defense:80, foul:25, dribbling:71, team_id:6, contract:4, user_team_ids: [3], position:"midfielder"},
 ]
 
 players.each {|p| Player.create(p)}
