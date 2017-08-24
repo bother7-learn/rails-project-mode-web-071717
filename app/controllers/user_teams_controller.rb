@@ -1,7 +1,7 @@
 class UserTeamsController < ApplicationController
 
   def new
-    if session[:user_id]
+  if session[:user_id]
     @user_team = UserTeam.new
       @players = Player.all
   else
@@ -36,7 +36,8 @@ class UserTeamsController < ApplicationController
       redirect_to user_team_path(@user_team)
     else
       flash[:message] = @user_team.errors.full_messages
-      redirect_to new_user_team_path
+      @players = Player.all
+      render "new"
     end
   end
 

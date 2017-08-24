@@ -7,7 +7,7 @@
 
 <table>
   <tr>
-    <th> Name </th>
+    <th style="text-align:left;"> Name </th>
     <th> Position </th>
     <th> Goals </th>
     <th> Shots </th>
@@ -15,7 +15,7 @@
   </tr>
   <% @user_team.players.each do |p| %>
   <tr>
-  <th><%= link_to p.name, player_path(p) %></th>
+  <th style="text-align:left;"><%= link_to p.name, player_path(p) %></th>
   <th><%= p.position %></th>
   <th><%= p.goals(@user_team)%> </th>
   <th><%= p.shots(@user_team) %> </th>
@@ -31,7 +31,9 @@
 
 <div class="matchright">
   <h1> <%= @user_team.name %> </h1>
+  <% if @user_team.user %>
 <h2> created by: <%= link_to @user_team.user.name, user_path(@user_team.user)%> <h2>
+  <% end %>
   <h1> <%= @user_team.win_loss_record %> </h1>
 
 </div>

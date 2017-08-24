@@ -8,6 +8,14 @@ class UserTeam < ApplicationRecord
   Match.where("hometeam_id = ? OR awayteam_id = ?", self.id, self.id)
   end
 
+  def salary
+    sum = 0
+    players.each do |player|
+      sum += player.contract
+    end
+    sum
+  end
+
   def win_loss_record
     homegames = self.matches.select {|match| match.hometeam_id == self.id}
     awaygames = self.matches.select {|match| match.awayteam_id == self.id}

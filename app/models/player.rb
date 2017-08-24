@@ -4,8 +4,7 @@ class Player < ApplicationRecord
   belongs_to :user, optional: true
   has_many :user_teams, through: :player_user_teams
   delegate :league, to: :team, allow_nil: true
-
-  validates :name, presence: true
+  validates :name, length: {maximum: 20}, presence: true
   validates :shooting,:passing,:defense,:foul,:dribbling, :position, presence: true
 
   def goals(userteam)
