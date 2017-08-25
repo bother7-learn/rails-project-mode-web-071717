@@ -155,6 +155,20 @@ div.matchright {
     max-width:500px;
 }
 
+div.matchleft {
+    float: left;
+    display: block;
+    background-color: #001a00;
+    opacity: 0.9;
+    padding: 25px;
+    margin: 25px;
+    border-radius: 10px;
+    color: white;
+    overflow-y: auto;
+    max-height:450px;
+    max-width:500px;
+}
+
 a {
  color: white;
 }
