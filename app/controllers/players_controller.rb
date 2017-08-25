@@ -1,12 +1,12 @@
 class PlayersController < ApplicationController
 
   def new
-    if session[:user_id]
-    @player = Player.new
-
-  else
-    redirect_to login_path
-  end
+    if !session[:user_id]
+      flash.now[:message] = "Must Be Logged In to Create Player"
+      redirect_to home_path
+    else
+      @player = Player.new(user_id: session[:user_id])
+    end
   end
 
   def index
@@ -25,13 +25,17 @@ end
 
   def create
     @player = Player.new(player_params)
-    if @player.valid?
-      if session[:user_id]
-      @player.user = User.find(session[:user_id])
-      end
+    @player.user_id = session[:user_id]
+    if @player.valid? && params[:usersubmit] == "0"
       @player.save
       redirect_to players_path    #might want to redirect to User_Team_path
     else
+      @player.salary
+      if params[:usersubmit] == "0"
+        flash.now[:message] = @player.errors.full_messages
+      else
+        flash.now[:message] = nil
+      end
       render :new
     end
   end

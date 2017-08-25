@@ -1,28 +1,61 @@
+<style>
+input[type=button], input[type=submit], input[type=reset] {
+    background-color: white;
+    border: none;
+    color: black;
+    padding: 8px 12px;
+    text-decoration: none;
+    margin: 2px 2px;
+    cursor: pointer;
+    border-radius: 2px;
+    font-size: 15px;
+    float: right;
+}
+</style>
+
 <div class = "bigleft" >
-<h1> Create Player Here </h1>
+<h1> Create Player </h1>
 <%= form_for @player do |f| %>
-<%if @player.errors.any? %>
-<h2> Errors:</h2>
 <ul>
-<%@player.errors.full_messages.each do |message| %>
-    <li style="color:red"><%= message %></li>
+<% if !!flash[:message] %>
+<% flash[:message].each do |message| %>
+    <p style="color:red"><%= message %></p>
+      <%end%>
       <%end%>
     </ul>
-    <%end%>
-<%= f.label :name %>
-<%= f.text_field :name %><br>
-<%= f.label :shooting %>
-<%= f.number_field :shooting, max: 99, min: 55 %><br>
-<%= f.label :passing %>
-<%= f.number_field :passing, max: 99, min: 55 %><br>
-<%= f.label :defense %>
-<%= f.number_field :defense, max: 99, min: 55 %><br>
-<%= f.label :foul %>
-<%= f.number_field :foul, max: 15, min: 5 %><br>
-<%= f.label :dribbling %>
-<%= f.number_field :dribbling, max: 99, min: 55 %><br>
-<%= f.label :position %>
-<%= f.select :position, [ 'forward','midfielder','defender','goalie' ], :prompt => 'Select One' %>
-<%= f.submit %>
+    <table>
+      <tr>
+<th style="text-align:left;"><%= f.label :name %></th>
+<th><%= f.text_field :name %></th>
+</tr>
+<tr>
+<th style="text-align:left;"><%= f.label :shooting %></th>
+<th><%= f.number_field :shooting, max: 99, min: 0, onchange: "form_submit()" %></th>
+</tr>
+<tr>
+<th style="text-align:left;"><%= f.label :passing %></th>
+<th><%= f.number_field :passing, max: 99, min: 0, onchange: "form_submit()" %></th>
+</tr>
+<tr>
+<th style="text-align:left;"><%= f.label :defense %></th>
+<th><%= f.number_field :defense, max: 99, min: 0, onchange: "form_submit()" %></th>
+</tr>
+<tr>
+<th style="text-align:left;"><%= f.label :foul %></th>
+<th><%= f.number_field :foul, max: 99, min: 0, onchange: "form_submit()" %></th>
+</tr>
+<tr>
+<th style="text-align:left;"><%= f.label :dribbling %></th>
+<th><%= f.number_field :dribbling, max: 99, min: 0, onchange: "form_submit()" %></th>
+</tr>
+<tr>
+<th style="text-align:left;"><%= f.label :position %></th>
+<th><%= f.select :position, [ 'forward','midfielder','defender','goalie' ], :prompt => 'Select One', onchange: "form_submit()" %> </th>
+</tr>
+</table>
+<%= hidden_field_tag :usersubmit, 0 %>
+<p style="font-size:25px;text-align:right;">$<%= @player.contract %> Million </p>
+<%= f.submit%>
 <% end %>
+
 </div>

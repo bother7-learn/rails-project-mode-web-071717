@@ -1,11 +1,12 @@
 class UserTeamsController < ApplicationController
 
   def new
-  if session[:user_id]
+  if !!session[:user_id]
     @user_team = UserTeam.new
       @players = Player.all
   else
-    redirect_to login_path
+    flash.now[:message] = "User Must be Logged in To Create Team"
+    redirect_to home_path
   end
   end
 
@@ -30,14 +31,15 @@ class UserTeamsController < ApplicationController
     @user_team.user_id = session[:user_id]
     params[:player_ids].each do |p|
     if p != ""
-    @user_team.players << Player.find(p)
+    @user_team.players << Player.find(p.to_i)
     end
     end
-    if @user_team.valid?
+    @user_team.valid?
+    if @user_team.valid? && params[:usersubmit] == "0"
       @user_team.save
       redirect_to user_team_path(@user_team)
     else
-      flash[:message] = @user_team.errors.full_messages
+      flash.now[:message] = @user_team.errors.full_messages
       @players = Player.all
       render "new"
     end

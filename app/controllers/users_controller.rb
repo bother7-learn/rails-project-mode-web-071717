@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
 
   def home
-    
+
   end
 
   def new
@@ -15,7 +15,7 @@ class UsersController < ApplicationController
       session[:user_id] = @user.id
       redirect_to user_path(@user)
     else
-      flash[:message] = @user.errors.messages
+      flash.now[:message] = @user.errors.messages
       render :new
     end
   end

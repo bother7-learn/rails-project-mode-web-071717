@@ -11,6 +11,7 @@ Created By: <%= link_to @player.user.name, user_path(@player.user)%>
 <%end%>
 
 <h2> Stats </h2>
+Salary: $<%= @player.salary %> Million<br>
 Scoring: <%= @player.shooting %><br>
 Passing: <%= @player.passing %><br>
 Defense: <%= @player.defense %><br>

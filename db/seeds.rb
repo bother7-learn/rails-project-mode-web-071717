@@ -74,7 +74,7 @@ players = [
   {name: "Adam Lallana",shooting:89, passing:92, defense:73, foul:15, dribbling:95, team_id:6,  user_team_ids: [3], position:"midfielder"},
   {name: "Daniel Sturridge",shooting:86, passing:74, defense:35, foul:15, dribbling:85, team_id:6,  user_team_ids: [3], position:"forward"},
   {name: "James Milner",shooting:82, passing:89, defense:80, foul:15, dribbling:85, team_id:6,  user_team_ids: [3], position:"defender"},
-  {name: "Loris Karius",shooting:30, passing:84, defense:80, foul:1, dribbling:55, team_id:6,  user_team_ids: [3], position:"goalie"},
+  {name: "Loris Karius",shooting:30, passing:84, defense:80, foul:1, dribbling:35, team_id:6,  user_team_ids: [3], position:"goalie"},
   {name: "Emre Can",shooting:83, passing:88, defense:88, foul:15, dribbling:87, team_id:6,  user_team_ids: [3], position:"midfielder"},
   {name: "Roberto Firmino",shooting:85, passing:87, defense:52, foul:15, dribbling:90, team_id:6, user_team_ids: [3], position:"forward"},
   {name: "Ragnar Klavan",shooting:48, passing:63, defense:79, foul:15, dribbling:62, team_id:6, user_team_ids: [3], position:"defender"},
@@ -87,4 +87,5 @@ players.each {|p| Player.create(p)}
 
 Player.all.each do |player|
   player.salary
+  player.save
 end

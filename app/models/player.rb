@@ -6,6 +6,13 @@ class Player < ApplicationRecord
   delegate :league, to: :team, allow_nil: true
   validates :name, length: {maximum: 20}, presence: true
   validates :shooting,:passing,:defense,:foul,:dribbling, :position, presence: true
+  validate :goalkeeper
+
+  def goalkeeper
+    if self.position == "goalie"
+    self.errors[:goalie] << " Shooting and Dribbling <= 40" unless (self.shooting <= 40 && self.dribbling <= 40)
+    end
+  end
 
   def goals(userteam)
     logs = userteam.matches.map do |match|
@@ -55,10 +62,15 @@ class Player < ApplicationRecord
   end
 
   def salary
-    sum = self.shooting ** 2 + self.passing ** 2 + self.defense ** 2 + self.dribbling ** 2 - self.foul
-    sum = 29000 if sum > 29000
+    if self.position != "goalie"
+      sum = self.shooting ** 2 + self.passing ** 2 + self.defense ** 2 + self.dribbling ** 2 - self.foul
+      if self.user_id == nil && sum > 29000
+        sum = 29000
+      end
+    else
+      sum = (self.defense ** 2) * 2
+    end
     self.contract = (sum * 0.000689).to_i
-    self.save
   end
 
 end

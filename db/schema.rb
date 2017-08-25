@@ -38,11 +38,11 @@ ActiveRecord::Schema.define(version: 20170824151501) do
     t.integer "team_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "shooting"
-    t.integer "passing"
-    t.integer "defense"
-    t.integer "foul"
-    t.integer "dribbling"
+    t.integer "shooting", default: 0
+    t.integer "passing", default: 0
+    t.integer "defense", default: 0
+    t.integer "foul", default: 0
+    t.integer "dribbling", default: 0
     t.string "position"
     t.integer "user_id"
     t.integer "contract"
