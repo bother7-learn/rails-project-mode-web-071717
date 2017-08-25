@@ -9,7 +9,7 @@
 <table >
   <tr>
     <th style="text-align:left;"> Pick one Attacker </th>
-    <th><%=select_tag 'player_ids[]', options_for_select(@players.where("position = 'forward'").collect{ |u| ["#{u.name} -  $#{u.contract} Million", u.id] }, :selected => @user_team.player_ids[0]), :include_blank => true, onchange: "team_submit()"%></th>
+    <th><%=select_tag 'player_ids[]', options_for_select(@players.order(contract: :desc).where("position = 'forward'").collect{ |u| ["#{u.name} -  $#{u.contract} Million", u.id] }, :selected => @user_team.player_ids[0]), :include_blank => true, onchange: "team_submit()"%></th>
   </tr>
   <tr>
     <th style="text-align:left;"> Pick one Attacker </th>
