@@ -1,3 +1,4 @@
+<div class="bigleft" >
 <h1> Create a User </h1>
 <%= form_for @user do |t| %>
 <%if @user.errors.any? %>
@@ -14,3 +15,20 @@
 <%= t.text_field :password %>
 <%= t.submit %>
 <% end %>
+</div>
+
+<style>
+input[type=button], input[type=submit], input[type=reset] {
+    background-color: white;
+    border: none;
+    color: black;
+    padding: 8px 12px;
+    text-decoration: none;
+    margin: 2px 2px;
+    cursor: pointer;
+    border-radius: 2px;
+    font-size: 12px;
+  }
+
+
+</style>
