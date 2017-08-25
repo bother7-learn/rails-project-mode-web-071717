@@ -18,7 +18,7 @@ Foul: <%= @player.foul %><br>
 Dribbling: <%= @player.dribbling %><br>
 Position: <%= @player.position %><br>
 
-<% if @player.user_id == session[:user_id] %>
+<% if @player.user_id == session[:user_id] && @player.user_id != nil %>
 <%= link_to "Edit", edit_player_path(@player) %>
 <%= link_to "Delete Player", @player, :confirm =>"Are you sure?", method: :delete%>
 <%end%>
