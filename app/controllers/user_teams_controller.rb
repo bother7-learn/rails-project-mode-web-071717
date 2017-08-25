@@ -59,7 +59,7 @@ class UserTeamsController < ApplicationController
       @user_team.players << Player.find(p)
       end
     end
-    if @user_team.valid?
+    if @user_team.valid? && params[:usersubmit] == "0"
       @user_team.save
       redirect_to user_team_path(@user_team)
     else

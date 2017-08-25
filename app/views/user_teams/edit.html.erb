@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <div class = "bigleft">
 <h1> Create Your Own Team! </h1>
 <%=form_tag "/user_teams/#{@user_team.id}", :method=>'patch' do %>
@@ -15,4 +16,74 @@ Pick one Defender: <%=select_tag 'player_ids[]', options_for_select(@players.whe
 Pick one Goalie: <%=select_tag 'player_ids[]', options_for_select(@players.where("position = 'goalie'").collect{ |u| [u.name, u.id] }, :selected => @user_team.player_ids[10] )%><br>
 <%= submit_tag "Edit Team" %>
 <% end %>
+=======
+
+
+<div class = "bigleft">
+
+
+
+<%=form_tag "/user_teams/#{@user_team.id}", :method=>'patch', :id => 'edit_team' do %>
+
+<table >
+  <%= hidden_field_tag :name, @user_team.name %>
+  <tr>
+    <th style="text-align:left;"> Pick one Attacker </th>
+    <th><%=select_tag 'player_ids[]', options_for_select(@players.where("position = 'forward'").collect{ |u| ["#{u.name} -  $#{u.contract} Million", u.id] }, :selected => @user_team.player_ids[0]), :include_blank => true, onchange: "team_update()"%></th>
+  </tr>
+  <tr>
+    <th style="text-align:left;"> Pick one Attacker </th>
+    <th><%=select_tag 'player_ids[]', options_for_select(@players.where("position = 'forward'").collect{ |u| ["#{u.name} -  $#{u.contract} Million", u.id] }, :selected => @user_team.player_ids[1]), :include_blank => true, onchange: "team_update()"%></th>
+  </tr>
+  <tr>
+    <th style="text-align:left;">Pick one Attacker </th>
+    <th><%=select_tag 'player_ids[]', options_for_select(@players.where("position = 'forward'").collect{ |u| ["#{u.name} -  $#{u.contract} Million", u.id] }, :selected => @user_team.player_ids[2]), :include_blank => true, onchange: "team_update()"%></th>
+  </tr>
+  <tr>
+    <th style="text-align:left;"> Pick one Midfielder </th>
+    <th> <%=select_tag 'player_ids[]', options_for_select(@players.where("position = 'midfielder'").collect{ |u| ["#{u.name} -  $#{u.contract} Million", u.id] }, :selected => @user_team.player_ids[3]), :include_blank => true, onchange: "team_update()"%> </th>
+  </tr>
+  <tr>
+    <th style="text-align:left;"> Pick one Midfielder </th>
+    <th> <%=select_tag 'player_ids[]', options_for_select(@players.where("position = 'midfielder'").collect{ |u| ["#{u.name} -  $#{u.contract} Million", u.id] }, :selected => @user_team.player_ids[4]), :include_blank => true, onchange: "team_update()"%></th>
+  </tr>
+  <tr>
+    <th style="text-align:left;"> Pick one Midfielder </th>
+    <th> <%=select_tag 'player_ids[]', options_for_select(@players.where("position = 'midfielder'").collect{ |u| ["#{u.name} -  $#{u.contract} Million", u.id] }, :selected => @user_team.player_ids[5]), :include_blank => true, onchange: "team_update()"%> </th>
+  </tr>
+  <tr>
+    <th style="text-align:left;"> Pick one Midfielder </th>
+    <th><%=select_tag 'player_ids[]', options_for_select(@players.where("position = 'midfielder'").collect{ |u| ["#{u.name} -  $#{u.contract} Million", u.id] }, :selected => @user_team.player_ids[6]), :include_blank => true, onchange: "team_update()"%></th>
+  </tr>
+  <tr>
+    <th style="text-align:left;"> Pick one Defender </th>
+    <th> <%=select_tag 'player_ids[]', options_for_select(@players.where("position = 'defender'").collect{ |u| ["#{u.name} -  $#{u.contract} Million", u.id] }, :selected => @user_team.player_ids[7]), :include_blank => true, onchange: "team_update()"%></th>
+  </tr>
+  <tr>
+    <th style="text-align:left;"> Pick one Defender </th>
+    <th> <%=select_tag 'player_ids[]', options_for_select(@players.where("position = 'defender'").collect{ |u| ["#{u.name} -  $#{u.contract} Million", u.id] }, :selected => @user_team.player_ids[8]), :include_blank => true, onchange: "team_update()"%></th>
+  </tr>
+  <tr>
+    <th style="text-align:left;">Pick one Defender </th>
+    <th> <%=select_tag 'player_ids[]', options_for_select(@players.where("position = 'defender'").collect{ |u| ["#{u.name} -  $#{u.contract} Million", u.id] }, :selected => @user_team.player_ids[9]), :include_blank => true, onchange: "team_update()"%></th>
+  </tr>
+  <tr>
+    <th style="text-align:left;">Pick one Goalie </th>
+    <th> <%=select_tag 'player_ids[]', options_for_select(@players.where("position = 'goalie'").collect{ |u| ["#{u.name} -  $#{u.contract} Million", u.id] }, :selected => @user_team.player_ids[10]), :include_blank => true, onchange: "team_update()"%></th>
+  </tr>
+</table>
+<%= hidden_field_tag :usersubmit, 0 %>
+ <p style="margin-top:2px;margin-bottom:2px;font-size:26px;"><%= submit_tag "Edit Team" %>
+   &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp  $<%=   @user_team.salary %> Million  </p>
+<% end %>
+
+</div>
+<div class="matchright">
+  <h1> Create Your Own Team! </h1>
+  <%if flash[:message] && @user_team.players.size == 11 %>
+  <%flash[:message].each do |m|%>
+  <p style="color:red;margin-top:2px;margin-bottom:2px;"><%=m%></p>
+  <%end%>
+  <%end%>
+>>>>>>> Joe
 </div>

@@ -32,6 +32,11 @@ class MatchesController < ApplicationController
 
   def show
     @match = Match.find(params[:id])
+    arr = ["forward", "midfielder", "defender", "goalie"]
+    hometeam = @match.hometeam.players
+    @hometeam = hometeam.sort_by {|p| arr.index(p.position)}
+    awayteam = @match.awayteam.players
+    @awayteam = awayteam.sort_by {|p| arr.index(p.position)}
   end
 
 

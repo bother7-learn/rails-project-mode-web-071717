@@ -11,7 +11,7 @@
     <th> Name </th>
     <th> Position </th>
   </tr>
-<% @match.hometeam.players.order('position').each do |player| %>
+<% @hometeam.each do |player| %>
 <tr>
   <th style="font-size:14px;"><%= player.name %></th>
   <th style="font-size:14px;"><%= player.position %></th>
@@ -35,7 +35,7 @@
     <th> Name </th>
     <th> Position </th>
   </tr>
-  <% @match.awayteam.players.order('position').each do |player| %>
+  <% @awayteam.each do |player| %>
   <tr>
   <th style="font-size:14px;"><%= player.name %></th>
   <th style="font-size:14px;"><%= player.position %></th>
