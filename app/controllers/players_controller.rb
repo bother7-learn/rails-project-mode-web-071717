@@ -2,7 +2,7 @@ class PlayersController < ApplicationController
 
   def new
     if !session[:user_id]
-      flash[:message] = "Must Be Logged In to Create Player"
+      flash[:alert] = "Must Be Logged In to Create Player"
       redirect_to home_path
     else
       @player = Player.new(user_id: session[:user_id])
@@ -55,6 +55,11 @@ end
       @player.save
       redirect_to player_path(@player)
     else
+      if params[:usersubmit] == "0"
+        flash[:message] = @player.errors.full_messages
+      else
+        flash[:message] = nil
+      end
       @player.salary
       render :edit
     end

@@ -5,7 +5,7 @@
 
 
 <%=form_tag "/user_teams", :id => 'new_team' do %>
-<h2 style="margin-top:4px;margin-bottom:2px;"> Name of Your Team: <%= text_field_tag "name" %></h2>
+<h2 style="margin-top:4px;margin-bottom:2px;"> Name of Your Team: <%= text_field_tag "name", @user_team.name %></h2>
 <table >
   <tr>
     <th style="text-align:left;"> Pick one Attacker </th>
