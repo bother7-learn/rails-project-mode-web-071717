@@ -2,7 +2,7 @@ class MatchesController < ApplicationController
 
   def new
     if !session[:user_id]
-      flash[:message] = "Must Be Logged In to Simulate Match"
+      flash[:alert] = "Must Be Logged In to Simulate Match"
       redirect_to home_path
     else
     @match = Match.new

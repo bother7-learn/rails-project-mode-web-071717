@@ -5,7 +5,7 @@ class UserTeamsController < ApplicationController
     @user_team = UserTeam.new
       @players = Player.all
   else
-    flash[:message] = "User Must be Logged in To Create Team"
+    flash[:alert] = "User Must be Logged in To Create Team"
     redirect_to home_path
   end
   end
@@ -63,6 +63,7 @@ class UserTeamsController < ApplicationController
       @user_team.save
       redirect_to user_team_path(@user_team)
     else
+      flash[:message] = @user_team.errors.full_messages
       redirect_to edit_user_team_path(@user_team)
     end
   end
