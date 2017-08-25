@@ -27,6 +27,7 @@ end
     @player = Player.new(player_params)
     @player.user_id = session[:user_id]
     if @player.valid? && params[:usersubmit] == "0"
+      @player.salary
       @player.save
       redirect_to players_path    #might want to redirect to User_Team_path
     else
@@ -52,6 +53,7 @@ end
     @player= Player.find(params[:id])
     @player.update(player_params)
     if @player.valid? && params[:usersubmit] == "0"
+      @player.salary
       @player.save
       redirect_to player_path(@player)
     else
