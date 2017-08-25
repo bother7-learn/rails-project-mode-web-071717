@@ -131,9 +131,9 @@ div.topleft {
     display: block;
     background-color: #001a00;
     opacity: 0.9;
-    max-width:500px;
-    padding: 15px;
-    margin: 15px;
+    max-width:555px;
+    padding: 25px;
+    margin: 25px;
     border-radius: 10px;
     color: white;
       text-align: center;
@@ -152,7 +152,7 @@ div.matchright {
     color: white;
     overflow-y: auto;
     max-height:450px;
-    max-width:500px;
+    max-width:400px;
 }
 
 div.matchleft {

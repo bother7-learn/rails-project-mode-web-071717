@@ -2,7 +2,7 @@ class MatchesController < ApplicationController
 
   def new
     if !session[:user_id]
-      flash.now[:message] = "Must Be Logged In to Simulate Match"
+      flash[:message] = "Must Be Logged In to Simulate Match"
       redirect_to home_path
     else
     @match = Match.new
@@ -25,13 +25,18 @@ class MatchesController < ApplicationController
      @match.save
      redirect_to match_path(@match)
    else
-      flash.now[:message] = @match.errors.full_messages
+      flash[:message] = @match.errors.full_messages
      redirect_to new_match_path
    end
   end
 
   def show
     @match = Match.find(params[:id])
+    arr = ["forward", "midfielder", "defender", "goalie"]
+    hometeam = @match.hometeam.players
+    @hometeam = hometeam.sort_by {|p| arr.index(p.position)}
+    awayteam = @match.awayteam.players
+    @awayteam = awayteam.sort_by {|p| arr.index(p.position)}
   end
 
 

@@ -43,13 +43,13 @@ players = [
   {name:"Zlatan Ibrahimovic",shooting:92, passing:84, defense:35, foul:25, dribbling:88, team_id:5, user_team_ids:[6], position: "forward"},
   {name:"Lionel Messi",shooting:93, passing:89, defense:35, foul:15, dribbling:97, team_id:2, user_team_ids:[2], position: "forward"},
   {name:"Christian Pulisic",shooting:77, passing:82, defense:40, foul:25, dribbling:84, team_id:4, user_team_ids: [5], position: "midfielder"},
-  {name:"Coutinho",shooting:874, passing:82, defense:33, foul:15, dribbling:87, team_id:6, user_team_ids:[3], position: "forward"},
+  {name:"Coutinho",shooting:87, passing:82, defense:33, foul:15, dribbling:87, team_id:6, user_team_ids:[3], position: "forward"},
   {name:"Lewandowski",shooting:90, passing:78, defense:35, foul:8, dribbling:80, team_id:8,user_team_ids: [7], position: "forward"},
   {name:"Arturo Vidal",shooting:81, passing:80, defense:84, foul:8, dribbling:79, team_id:8,user_team_ids: [7],  position: "midfielder"},
   {name:"Marco Asensio",shooting:85, passing:83, defense:41, foul:4, dribbling:85, team_id:1, user_team_ids: [1], position: "midfielder"},
   {name:"Alexis Sanchez",shooting:84, passing:79, defense:40, foul:4, dribbling:88, team_id:3,user_team_ids: [4], position: "forward"},
   {name:"Luis Suarez",shooting:93, passing:85, defense:48, foul:8, dribbling:91, team_id:2, user_team_ids: [2],  user_team_ids: [2],  position: "forward"},
-  {name:"Paul Pogba",shooting:82, passing:86, defense:75, foul:25, dribbling:88, team_id:5,user_team_ids: [5], position: "midfielder"},
+  {name:"Paul Pogba",shooting:82, passing:86, defense:75, foul:25, dribbling:88, team_id:5,user_team_ids: [6], position: "midfielder"},
   {name:"Antoine Griezmann",shooting:90, passing:85, defense:40, foul:15, dribbling:90, team_id:7,user_team_ids: [9], position: "forward"},
   {name:"Fernando Torres",shooting:75, passing:90, defense:25, foul:15, dribbling:80, team_id:7,user_team_ids: [9], position: "forward"},
   {name: "Neymar", shooting:95, passing:93, defense: 41, foul: 20, dribbling: 98, team_id: 9,user_team_ids: [8], position: "forward"},
@@ -127,15 +127,15 @@ players = [
   {name: "Thiago Silva",shooting:57, passing:73, defense:90, foul:25, dribbling:73, team_id:9, user_team_ids: [8], position:"defender"},
   {name: "Dani Alves",shooting:70, passing:76, defense:78, foul:25, dribbling:82, team_id:9, user_team_ids: [8], position:"defender"},
   {name: "Serge Aurier",shooting:66, passing:73, defense:80, foul:25, dribbling:77, team_id:9, user_team_ids: [8], position:"defender"},
-  {name: "Kevin Trapp",shooting:20, passing:45, defense:92, foul:5, dribbling:35, team_id:9, user_team_ids: [8], position:"goalie"}
-  {name: "Kevin Gameiro",shooting:89, passing:84, defense:40, foul:25, dribbling:85, team_id:7, user_team_ids: [9], position:"forward"}
-  {name: "Yannick Carrasco",shooting:78, passing:76, defense:29, foul:25, dribbling:87, team_id:7, user_team_ids: [9], position:"midfielder"}
-  {name: "Nicolas Gaitan",shooting:74, passing:83, defense:39, foul:25, dribbling:86, team_id:7, user_team_ids: [9], position:"midfielder"}
-  {name: "Koke",shooting:75, passing:85, defense:55, foul:25, dribbling:82, team_id:7, user_team_ids: [9], position:"midfielder"}
-  {name: "Gabriel Arenas",shooting:72, passing:80, defense:73, foul:25, dribbling:76, team_id:7, user_team_ids: [9], position:"midfielder"}
-  {name: "Diego Godin",shooting:48, passing:65, defense:88, foul:25, dribbling:63, team_id:7, user_team_ids: [9], position:"defender"}
-  {name: "Filipe Luis",shooting:62, passing:77, defense:82, foul:25, dribbling:77, team_id:7, user_team_ids: [9], position:"defender"}
-  {name: "Juan-Fran Belen",shooting:58, passing:74, defense:79, foul:25, dribbling:77, team_id:7, user_team_ids: [9], position:"defender"}
+  {name: "Kevin Trapp",shooting:20, passing:45, defense:92, foul:5, dribbling:35, team_id:9, user_team_ids: [8], position:"goalie"},
+  {name: "Kevin Gameiro",shooting:89, passing:84, defense:40, foul:25, dribbling:85, team_id:7, user_team_ids: [9], position:"forward"},
+  {name: "Yannick Carrasco",shooting:78, passing:76, defense:29, foul:25, dribbling:87, team_id:7, user_team_ids: [9], position:"midfielder"},
+  {name: "Nicolas Gaitan",shooting:74, passing:83, defense:39, foul:25, dribbling:86, team_id:7, user_team_ids: [9], position:"midfielder"},
+  {name: "Koke",shooting:75, passing:85, defense:55, foul:25, dribbling:82, team_id:7, user_team_ids: [9], position:"midfielder"},
+  {name: "Gabriel Arenas",shooting:72, passing:80, defense:73, foul:25, dribbling:76, team_id:7, user_team_ids: [9], position:"midfielder"},
+  {name: "Diego Godin",shooting:48, passing:65, defense:88, foul:25, dribbling:63, team_id:7, user_team_ids: [9], position:"defender"},
+  {name: "Filipe Luis",shooting:62, passing:77, defense:82, foul:25, dribbling:77, team_id:7, user_team_ids: [9], position:"defender"},
+  {name: "Juan-Fran Belen",shooting:58, passing:74, defense:79, foul:25, dribbling:77, team_id:7, user_team_ids: [9], position:"defender"},
   {name: "Jan Oblak",shooting:20, passing:40, defense:93, foul:5, dribbling:35, team_id:7, user_team_ids: [9], position:"goalie"}
 ]
 
