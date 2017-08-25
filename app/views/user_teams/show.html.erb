@@ -18,12 +18,11 @@
   <th><%= p.assists(@user_team) %> </th>
   </tr>
   <% end %>
-
-  <% if @user_team.user_id == session[:user_id] && @user_team.user_id != nil %>
-  <%= link_to "Edit Team", edit_user_team_path(@user_team) %>
-  <%= link_to "Delete this Team", @user_team, method: :delete %>
-  <% end %>
 </table>
+<% if @user_team.user_id == session[:user_id] && @user_team.user_id != nil %>
+<%= link_to "Edit Team", edit_user_team_path(@user_team),{:style=>'color:#00FFFF;', :class => "css_class"}  %> &nbsp &nbsp
+<%= link_to "Delete this Team", @user_team, {method: :delete, :style=>'color:#B22222;', :class => "css_class"} %>
+<% end %>
 </div>
 
 <div class="matchright">
@@ -32,6 +31,10 @@
 <h2> created by: <%= link_to @user_team.user.name, user_path(@user_team.user)%> <h2>
   <% end %>
   <h1> <%= @user_team.win_loss_record %> </h1>
-
-
 </div>
+
+<style>
+  a.delete{
+    color: #00FFFF
+  }
+</style>

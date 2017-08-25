@@ -1,3 +1,4 @@
+<div class = "bigleft">
 <h1> Create Your Own Team! </h1>
 <%=form_tag "/user_teams/#{@user_team.id}", :method=>'patch' do %>
 <h2> Name of Your Team: <%= text_field_tag "name", @user_team.name %></h2>
@@ -14,3 +15,4 @@ Pick one Defender: <%=select_tag 'player_ids[]', options_for_select(@players.whe
 Pick one Goalie: <%=select_tag 'player_ids[]', options_for_select(@players.where("position = 'goalie'").collect{ |u| [u.name, u.id] }, :selected => @user_team.player_ids[10] )%><br>
 <%= submit_tag "Edit Team" %>
 <% end %>
+</div>

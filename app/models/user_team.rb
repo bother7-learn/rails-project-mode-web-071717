@@ -3,7 +3,7 @@ class UserTeam < ApplicationRecord
   has_many :players, through: :player_user_teams
   belongs_to :user, optional: true
   validates :name, presence:true, uniqueness: true
-  # validate :totalsalary
+  validate :totalsalary
 
   def matches
   Match.where("hometeam_id = ? OR awayteam_id = ?", self.id, self.id)
@@ -18,7 +18,7 @@ class UserTeam < ApplicationRecord
   end
 
   def totalsalary
-    self.errors[:salary] << " is Over Team Budget by #{self.salary - 140}" unless (self.salary <= 140 || self.user_id == nil)
+    self.errors[:salary] << " is Over Team Budget by #{self.salary - 150}" unless (self.salary <= 150 || self.user_id == nil)
   end
 
   def win_loss_record

@@ -1,3 +1,24 @@
+<style>
+input[type=button], input[type=submit], input[type=reset] {
+    background-color: white;
+    border: none;
+    color: black;
+    padding: 8px 12px;
+    text-decoration: none;
+    margin: 2px 2px;
+    cursor: pointer;
+    border-radius: 2px;
+    font-size: 12px;
+  }
+
+    a.{
+      color: #00FFFF
+    }
+
+</style>
+
+
+<div class="bigleft">
 <h1> Login User </h1>
 <%= form_for @user, url: "/login", method: :post do |t| %>
 <%= t.label :name %>
@@ -7,3 +28,4 @@
 <%= t.submit "Log In" %><br>
 <% end %>
 Or Sign Up for an account <%=link_to "here", signup_path %>
+</div>
