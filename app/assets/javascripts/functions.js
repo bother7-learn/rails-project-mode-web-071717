@@ -18,3 +18,10 @@ var team_update = function() {
    document.getElementById("usersubmit").value = "1";
    document.getElementById("edit_team").submit();
 }
+
+var player_update = function() {
+   // update the hidden field to 1
+   // then submit the form
+   document.getElementById("usersubmit").value = "1";
+   document.getElementById("edit_player").submit();
+}
