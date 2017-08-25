@@ -2,12 +2,12 @@
 <div class="bigleft">
 <h1><%= @player.name %> </h1>
     <% if @player.team %>
-  League: <%= link_to @player.league.name, league_path(@player.league) %><br>
-  Team: <%= link_to @player.team.name, team_path(@player.team) %><br>
+  League: <%= link_to @player.league.name, league_path(@player.league), {:style=>'color:#00FFFF;', :class => "css_class"}%><br>
+  Team: <%= link_to @player.team.name, team_path(@player.team),{:style=>'color:#00FFFF;', :class => "css_class"} %><br>
 <%end%>
 
 <% if @player.user_id != nil %>
-Created By: <%= link_to @player.user.name, user_path(@player.user)%>
+Created By: <%= link_to @player.user.name, user_path(@player.user),{:style=>'color:#00FFFF;', :class => "css_class"} %>
 <%end%>
 
 <h2> Stats </h2>
@@ -20,7 +20,10 @@ Dribbling: <%= @player.dribbling %><br>
 Position: <%= @player.position %><br>
 
 <% if @player.user_id == session[:user_id] && @player.user_id != nil %>
-<%= link_to "Edit", edit_player_path(@player) %>
-<%= link_to "Delete Player", @player, :confirm =>"Are you sure?", method: :delete%>
+<%= link_to "Edit", edit_player_path(@player),{:style=>'color:#00FFFF;', :class => "css_class"}  %> &nbsp &nbsp
+<%= link_to "Delete Player", @player, {:confirm =>"Are you sure?", method: :delete,:style=>'color:#B22222;', :class => "css_class"}%>
 <%end%>
 </div>
+
+<style>
+</style>
