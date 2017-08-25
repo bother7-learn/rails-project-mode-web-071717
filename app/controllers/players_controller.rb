@@ -45,16 +45,17 @@ end
   end
 
   def edit
-    @player = Player.find_by(user_id: session[:user_id])
+    @player = Player.find(params[:id])
   end
 
   def update
     @player= Player.find(params[:id])
     @player.update(player_params)
-    if @player.valid?
+    if @player.valid? && params[:usersubmit] == "0"
       @player.save
       redirect_to player_path(@player)
     else
+      @player.salary
       render :edit
     end
   end
