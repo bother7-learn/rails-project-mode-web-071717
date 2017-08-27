@@ -105,14 +105,19 @@ end
     players = team.players.map do |player|
       [player.name, (player.passing ** 2)]
     end
-    players.delete(hash[:scored_by])
+    assists = []
+    players.each do |value|
+      if value[0] != hash[:scored_by]
+        assists << value
+      end
+    end
     outcome = []
     total = 0
-    players.each do |player|
+    assists.each do |player|
       outcome << player[0]
       total += player[1].to_f
     end
-    probability = players.map do |player|
+    probability = assists.map do |player|
       (player[1].to_f/total.to_f).rationalize
     end
     assist = AliasTable.new(outcome, probability)
