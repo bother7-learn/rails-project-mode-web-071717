@@ -56,7 +56,9 @@ class UserTeamsController < ApplicationController
       @user_team.name = params[:name]
       @user_team.players = []
       params[:player_ids].each do |p|
-      @user_team.players << Player.find(p)
+        if p != ""
+        @user_team.players << Player.find(p.to_i)
+        end
       end
     end
     if @user_team.valid? && params[:usersubmit] == "0"
