@@ -1,36 +1,33 @@
-# Rails Project Mode
+# Fantasy Futbol
 
-Congratulations, we are starting project mode! This means that you'll spend the rest of the week working in a team to build out a Rails project of your choice. There will be some lectures and new material scheduled throughout the week, but the bulk of the time will be working on your projects.
+Create a team of your favorite players, or use an existing team and simulate matches!
 
+![alt text](https://raw.githubusercontent.com/bother7/rails-project-mode-web-071717/master/public/welcome.png)
 
-Some example project ideas from previous classes:
+## Description
 
-1. [Regifter](http://regifter.herokuapp.com/) - A gift trading app that lets users upload images and descriptions of unwanted gifts and propose trades with other users.
-2. [Flatiron Postcard](http://www.flatironpostcard.com/) - An app that lets you create and send custom postcards to friends and family
-3. Petster - A social media site for pets
+Existing players have a salary associated with them. Create new players with the ratings you want. Construct a fantasy soccer team under the budget, and pit your team in simulated matches against any other team.
 
+### Simulation
 
-## Requirements:
+The simulator is a series of decision trees with probabilities associated to each outcome. The probabilities are determined by your players' ratings and the opposing teams. The AliasTable gem was used to associate probabilities to different "random" outcomes
 
-1. You should have least five models. You do not have to have all of these built out on day one. Just having three is fine.  But by the end of the week, you should have five models.
+![alt text](https://raw.githubusercontent.com/bother7/rails-project-mode-web-071717/master/public/simulation.png)
 
-2. Some methods in your models. Each group member should write at least 4 -5 methods. So there should be at least twenty methods total in your models.
+### Getting Started
 
-3. Specs - there should be at least 20 specs in your project (five per person). We'll cover testing tomorrow--stay tuned!
+clone
+bundle install
+rails db:create
+rails db:migrate
+rails db:seed
+rails s
 
-4. An analytics page - I will show some charting libraries for this in a lecture - so don't worry about displaying this data visually.  The main learning goal of this is to get you to write some interesting activerecord queries.  I will also try to have a review of advanced AR some time this week.
+## Authors
 
-5. No APIs until you get approval from an instructor.  The reason is because API's oftentimes leads you to learning the specific API really well, but not learning Rails that well.  Rails is a more transferable skill.  So stick with that. 
+* **Joe Cha** - *Initial work* - [bother7](https://github.com/bother7)
+* **Roman Mullady** - *Initial work* - [SchruteFarms23](https://github.com/SchruteFarms23)
 
-6. No JavaScript. Stay focused on Rails for this project - we'll have plenty of time this semeseter to cover JS topics. 
+## License
 
-## Week Guideline
-
-1. Monday - come up with idea, model out domain. 
-2. Tuesday - add model tests, start building out basic features. Have some functionality built out by the end of the day. 
-3. Wednesday - Iterate on the features that you built yesterday. Go from a 'skateboard' version to a scooter or a bicycle. **Be prepared to demo something by 5 pm**. It doesnt' have to be perfect, but it should be working. 
-4. Thursday - start styling/ cleaning up issues. 
-5. Friday - issue cleanup and final demos. 
-
-
-
+This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
