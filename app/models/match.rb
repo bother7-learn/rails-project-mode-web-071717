@@ -3,6 +3,8 @@ belongs_to :hometeam, class_name: "UserTeam"
 belongs_to :awayteam, class_name: "UserTeam"
 validate :same_team?
 
+
+
 def same_team?
   self.errors[:home] << " and Away Can't be Same Team" unless hometeam != awayteam
 end

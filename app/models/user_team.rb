@@ -3,7 +3,12 @@ class UserTeam < ApplicationRecord
   has_many :players, through: :player_user_teams
   belongs_to :user, optional: true
   validates :name, presence:true, uniqueness: true
+  validate :unique?
   validate :totalsalary
+
+  def unique?
+  self.errors[:players] << "need to be unique" if  self.players != self.players.uniq
+  end
 
   def matches
   Match.where("hometeam_id = ? OR awayteam_id = ?", self.id, self.id)

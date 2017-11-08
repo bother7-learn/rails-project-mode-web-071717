@@ -12,9 +12,20 @@ class MatchesController < ApplicationController
   end
 
   def create
+
     @match = Match.new
+    if params[:home_user_team_id] != ""
     home = UserTeam.find(params[:home_user_team_id])
+    else
+    redirect_to new_match_path
+    return
+    end
+    if params[:away_user_team_id] != ""
     away = UserTeam.find(params[:away_user_team_id])
+    else
+    redirect_to new_match_path
+    return
+    end
 
    # home = Team.find(params[:home_team_id]) or UserTeam.find(params[:home_user_team_id])
    # away = Team.find(params[:away_team_id]) or UserTeam.find(params[:away_user_team_id])
