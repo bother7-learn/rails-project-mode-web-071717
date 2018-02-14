@@ -45,7 +45,7 @@ ActiveRecord::Schema.define(version: 20170824151501) do
     t.integer "dribbling", default: 0
     t.string "position"
     t.integer "user_id"
-    t.integer "contract"
+    t.integer "contract", default:0
   end
 
   create_table "teams", force: :cascade do |t|
